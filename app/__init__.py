@@ -1,5 +1,6 @@
 from flask import Flask
-# from .extensions import db
+from dotenv import load_dotenv
+load_dotenv()
 from .config import Config
 from app.utils.logging_config import setup_logging
 def create_app(config_class=Config):

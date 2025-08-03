@@ -3,7 +3,7 @@ import os
 import win32com.client
 import pythoncom
 from werkzeug.utils import secure_filename
-from OCRHandler import OCRHandler
+from app.Services.OCRHandler import OCRHandler
 # from .utils.logging_config import configure_logging
 import utils
 import utils.logging_config
