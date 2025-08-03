@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Document Processing System</title>
+    <link rel="stylesheet" href="../static/fontawesome-free-7.0.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+    <!--- status-container ---------------------------------------------------------------------->
+    <div class="status-container" id="statusContainer"></div>
+
+    <!--- Main-container ------------------------------------------------------------------------>
+    <div class="container">
+
+        <header>
+            <h1><i class="fas fa-id-card"></i> OCR Document Processing</h1>
+        </header>
+        <div class="main-content">
+            <!--- Left panel (Import and Uploaded Image) ------------------------------------------------------------------------>
+            <div class="panel">
+                <div class="card compact">
+                    <h2 class="card-title"><i class="fas fa-file-import"></i> Import</h2>
+                    
+                    <div class="import-options">
+                        <div class="scanner-section">
+                            <h3 class="section-title"><i class="fas fa-scanner"></i> Scanner</h3>
+                            <button id="loadScanners" class="btn btn-sm">
+                                <i class="fas fa-search"></i> Load
+                            </button>
+                            <select id="scannerList" disabled>
+                                <option value="">No scanners</option>
+                            </select>
+                            <button id="scanBtn" class="btn btn-sm btn-warning" disabled>
+                                <i class="fas fa-scanner-image"></i> Scan
+                            </button>
+                        </div>
+                        
+                        <div class="upload-section">
+                            <h3 class="section-title"><i class="fas fa-upload"></i> File</h3>
+                            <input type="file" id="fileInput" accept="image/*,.pdf" class="btn-sm">
+                            
+                            <div id="dropArea" class="drop-area">
+                                <p><i class="fas fa-cloud-upload-alt" style="font-size: 1.2rem;"></i></p>
+                                <p>Drag & drop</p>
+                                <p><small>(JPG, PNG, PDF)</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-section">
+                        <button id="processBtn" class="btn btn-success">
+                            <i class="fas fa-cogs"></i> Process
+                        </button>
+                    </div>
+                    
+                    <div id="loading" class="loading">
+                        <div class="spinner"></div>
+                        <small>Processing...</small>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-image"></i> Uploaded</h2>
+                    <div class="image-container">
+                        <img id="uploadedImage" class="image-preview" alt="Uploaded image">
+                    </div>
+                </div>
+            </div>
+
+            <!--- Right panel (Processed Image and Extracted data) ------------------------------------------------------------------------>
+            <div class="panel">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-image-process"></i> Processed</h2>
+                    <div class="image-container">
+                        <img id="processedImage" class="image-preview" alt="Processed image">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-info-circle"></i> Extracted Data</h2>
+                    <div id="extractedInfo" class="extracted-data-grid">
+                        <!-- Column 1 -->
+                        <div>
+                            <div class="info-item">
+                                <span class="info-label">First Name</span>
+                                <div class="info-value">
+                                    <span id="firstName" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="firstName">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="firstName">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="firstName">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">Second Name</span>
+                                <div class="info-value">
+                                    <span id="secondName" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="secondName">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="secondName">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="secondName">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">Full Name</span>
+                                <div class="info-value">
+                                    <span id="fullName" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="fullName">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="fullName">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="fullName">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">National ID</span>
+                                <div class="info-value">
+                                    <span id="nationalId" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="nationalId">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="nationalId">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="nationalId">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Column 2 -->
+                        <div>
+                            <div class="info-item">
+                                <span class="info-label">Address</span>
+                                <div class="info-value">
+                                    <span id="address" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="address">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="address">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="address">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">Date of Birth</span>
+                                <div class="info-value">
+                                    <span id="birth" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="birth">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="birth">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="birth">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">Governorate</span>
+                                <div class="info-value">
+                                    <span id="gov" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="gov">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="gov">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="gov">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">Gender</span>
+                                <div class="info-value">
+                                    <span id="gender" class="info-text" contenteditable="false">N/A</span>
+                                    <div class="info-actions">
+                                        <button class="edit-btn" data-target="gender">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="save-btn" data-target="gender">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="copy-btn" data-target="gender">
+                                            <i class="far fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-section">
+                        <button id="saveAllBtn" class="btn btn-edit" style="display: none;">
+                            <i class="fas fa-save"></i> Save All Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/index.js"></script>
+</body>
+</html>
