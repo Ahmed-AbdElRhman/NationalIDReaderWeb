@@ -1,12 +1,7 @@
 import os
 import logging
-from logging.handlers import RotatingFileHandler
 from pythonjsonlogger import jsonlogger  # For structured JSON logging
-from dotenv import load_dotenv
 from concurrent_log_handler import ConcurrentRotatingFileHandler
-
-
-load_dotenv()
 
 class CustomJsonFormatter(jsonlogger.JsonFormatter):
     def add_fields(self, log_record, record, message_dict):
@@ -21,6 +16,8 @@ def setup_logging(app):
     """Configure logging for the application"""
     # Get configuration from environment variables with defaults
     log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
+    
+
     log_file = os.getenv('LOG_FILE', 'logxs/IDReader.log')
     max_log_size = int(os.getenv('MAX_LOG_SIZE_MB', 10)) * 1024 * 1024  # Convert MB to bytes
     backup_count = int(os.getenv('LOG_BACKUP_COUNT', 10))
