@@ -163,70 +163,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Process button handler
-    processBtn.addEventListener('click', async function () {
+    processBtn.addEventListener('click', function() {
         if (!uploadedImage.src || uploadedImage.src === window.location.href) {
-            showStatus("Please upload or scan a document first", "error");
+            showStatus("Please upload or scan Image first", "error");
             return;
         }
-
+        
         showStatus("Processing document... This may take a moment", "info");
         loadingDiv.style.display = "flex";
-
-        try {
-            // Prepare the form data
-            const formData = new FormData();
-
-            // Check if the image is from a file upload or scanner simulation
-            if (uploadedImage.src.startsWith('data:')) {
-                // Convert data URL to blob
-                const blob = await fetch(uploadedImage.src).then(r => r.blob());
-                formData.append('image', blob, 'document.png');
-            } else {
-                // For simulated scanner images (placeholder), we'll use the URL
-                // Note: In a real app, you'd want to upload the actual scanned image
-                const response = await fetch(uploadedImage.src);
-                const blob = await response.blob();
-                formData.append('image', blob, 'scanned_document.png');
-            }
-
-            // Send to OCR processing API
-            const response = await fetch('http://127.0.0.1:5000/process', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (!response.ok) {
-                throw new Error(`Server returned ${response.status}`);
-            }
-
-            const result = await response.json();
-            console.log('Processing result:', result);
-            // Display the processed image
-            if (result.processed_image) {
-                processedImage.src = `data:image/png;base64,${result.processed_image}`;
-                processedImage.style.display = "block";
-            }
-
-            // Update extracted data fields
-            if (result.data) {
-                console.log('Extracted data:', result.data);
-                document.getElementById('firstName').textContent = result.data.firstname || "N/A";
-                document.getElementById('secondName').textContent = result.data.parentfullname || "N/A";
-                document.getElementById('fullName').textContent = result.data.firstname+" "+result.data.parentfullname || "N/A";
-                document.getElementById('nationalId').textContent = result.data.nationalID || "N/A";
-                document.getElementById('address').textContent = result.data.address || "N/A";
-                document.getElementById('birth').textContent = result.data.birth || "N/A";
-                document.getElementById('gov').textContent = result.data.gov || "N/A";
-                document.getElementById('gender').textContent = result.data.gender || "N/A";
-            }
-
-            showStatus("Document processed successfully", "success");
-        } catch (error) {
-            console.error('Processing error:', error);
-            showStatus("Failed to process document: " + error.message, "error");
-        } finally {
+        
+        setTimeout(function() {
+            // For testing: Use the uploaded image in processed section
+            processedImage.src = uploadedImage.src;
+            processedImage.style.display = "block";
+            
+            // Simulate extracted data
+            document.getElementById('firstName').textContent = "John";
+            document.getElementById('secondName').textContent = "Doe";
+            document.getElementById('fullName').textContent = "John Doe";
+            document.getElementById('nationalId').textContent = "12345678901234";
+            document.getElementById('address').textContent = "123 Main St, Cairo";
+            document.getElementById('birth').textContent = "15/05/1985";
+            document.getElementById('gov').textContent = "Cairo";
+            document.getElementById('gender').textContent = "Male";
+            
             loadingDiv.style.display = "none";
-        }
+            showStatus("Document processed successfully", "success");
+        }, 1500);
     });
     
     // Edit/Save functionality for extracted data

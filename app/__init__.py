@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS 
 from dotenv import load_dotenv
 import os
 load_dotenv()
@@ -7,6 +8,7 @@ from .config import Config
 from app.utils.logging_config import setup_logging
 def create_app(config_class=Config):
     app = Flask(__name__,template_folder='Front/templates', static_folder='Front/static')
+    CORS(app)  # Enable CORS for all routes to work on Localhost
     app.config.from_object(config_class)
     
     # Initialize extensions
@@ -22,7 +24,7 @@ def create_app(config_class=Config):
 # def register_extensions(app):
 #     db.init_app(app)
 
-def register_blueprints(app):
-    from app.Routes.IDReaderEndPoints import IDReaderEndPoints    
-    app.register_blueprint(IDReaderEndPoints)
-    # Register other blueprints here as needed
+# def register_blueprints(app):
+#     from app.Routes.IDReaderEndPoints import IDReaderEndPoints    
+#     app.register_blueprint(IDReaderEndPoints)
+#     # Register other blueprints here as needed

@@ -20,8 +20,6 @@ if not os.path.exists(UPLOAD_FOLDER):
     print(f"Creating upload folder: {UPLOAD_FOLDER}")
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-
-
 def list_scanners():
     scannerlist_device = []
     scannerlist_device.clear()
