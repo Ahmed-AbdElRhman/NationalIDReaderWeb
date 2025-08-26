@@ -1,16 +1,18 @@
 from flask import Flask
 from flask_cors import CORS 
-from dotenv import load_dotenv
-import os
-load_dotenv()
-
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 from .config import Config
 from app.utils.logging_config import setup_logging
+
+
+# db = SQLAlchemy()
+# bcrypt = Bcrypt()
+
 def create_app(config_class=Config):
     app = Flask(__name__,template_folder='Front/templates', static_folder='Front/static')
     CORS(app)  # Enable CORS for all routes to work on Localhost
     app.config.from_object(config_class)
-    
     # Initialize extensions
     # register_extensions(app)
     # Register blueprints
@@ -23,6 +25,7 @@ def create_app(config_class=Config):
 
 # def register_extensions(app):
 #     db.init_app(app)
+#     bcrypt.init_app(app)
 
 # def register_blueprints(app):
 #     from app.Routes.IDReaderEndPoints import IDReaderEndPoints    

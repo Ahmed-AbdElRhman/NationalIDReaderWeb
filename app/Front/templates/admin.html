@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Application - Admin Dashboard</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/admin.css">
+</head>
+<body>
+    <!-- Global Alert Container (outside both pages) -->
+    <div class="alert-container" id="global-alert-container"></div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="login-container">
+        <div class="login-card card">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h2 class="text-primary"><i class="bi bi-shield-lock"></i> OCR Admin</h2>
+                    <p class="text-muted">Sign in to your account</p>
+                </div>
+                
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="dashboard-container d-none">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-brand d-flex align-items-center justify-content-center p-4">
+                <h4 class="text-white"><i class="bi bi-shield-lock"></i> OCR Admin</h4>
+            </div>
+            <hr class="sidebar-divider my-0">
+            <div class="sidebar-nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-section="overview">
+                            <i class="bi bi-speedometer2 me-2"></i> Overview
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="subscription">
+                            <i class="bi bi-credit-card me-2"></i> Subscription
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="settings">
+                            <i class="bi bi-gear me-2"></i> Settings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout-btn">
+                            <i class="bi bi-box-arrow-right me-2"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800" id="page-title">Dashboard Overview</h1>
+                <div id="subscription-status" class="d-none">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <div id="overview-section" class="content-section">
+                <div class="row">
+                    <!-- Total Scans Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card scans h-100">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Scans</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="total-scans">0</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-camera fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card status h-100">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Status</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="status">Inactive</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-check-circle fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expiry Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card expiry h-100">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Expiry Date</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="expiry-date">-</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-calendar fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scans Remaining Card -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card scans h-100">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Scans Remaining</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="scans-remaining">0</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="bi bi-diagram-3 fs-1 text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <button class="btn btn-primary w-100" onclick="showSection('subscription')">
+                                            <i class="bi bi-arrow-repeat me-2"></i> Renew Subscription
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <button class="btn btn-success w-100" id="validate-subscription-btn">
+                                            <i class="bi bi-check-circle me-2"></i> Validate Subscription
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-info w-100" onclick="showSection('settings')">
+                                            <i class="bi bi-key me-2"></i> Change Password
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription Section -->
+            <div id="subscription-section" class="content-section d-none">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Subscription Management</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="expiry-days" class="form-label">Subscription Duration (Days)</label>
+                                            <input type="number" class="form-control" id="expiry-days" min="1" max="1095" value="365">
+                                            <div class="form-text">Number of days the subscription will be valid for</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="max-scans" class="form-label">Maximum Scans</label>
+                                            <input type="number" class="form-control" id="max-scans" min="1" value="100">
+                                            <div class="form-text">Maximum number of scans allowed during subscription period</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg" id="renew-subscription-btn">
+                                        <i class="bi bi-arrow-repeat me-2"></i> Renew Subscription
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="content-section d-none">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Change Password</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="change-password-form">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="current-password" class="form-label">Current Password</label>
+                                                <input type="password" class="form-control" id="current-password" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="new-password" class="form-label">New Password</label>
+                                                <input type="password" class="form-control" id="new-password" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="confirm-password" class="form-label">Confirm New Password</label>
+                                                <input type="password" class="form-control" id="confirm-password" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2 d-md-flex">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-key me-2"></i> Change Password
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" onclick="showSection('overview')">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="../static/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/admin.js"></script>
+</body>
+</html>

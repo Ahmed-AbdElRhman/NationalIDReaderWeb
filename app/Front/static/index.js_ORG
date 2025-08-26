@@ -1,0 +1,342 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const loadScannersBtn = document.getElementById('loadScanners');
+    const scannerList = document.getElementById('scannerList');
+    const scanBtn = document.getElementById('scanBtn');
+    const fileInput = document.getElementById('fileInput');
+    const dropArea = document.getElementById('dropArea');
+    const processBtn = document.getElementById('processBtn');
+    const uploadedImage = document.getElementById('uploadedImage');
+    const processedImage = document.getElementById('processedImage');
+    const loadingDiv = document.getElementById('loading');
+    const statusContainer = document.getElementById('statusContainer');
+    const saveAllBtn = document.getElementById('saveAllBtn');
+    
+    // Track edited fields
+    let editedFields = new Set();
+    
+    // Enhanced Status Notification System
+    function showStatus(message, type, duration = 5000) {
+        const icons = {
+            success: "check-circle",
+            error: "exclamation-circle",
+            info: "info-circle",
+            warning: "exclamation-triangle"
+        };
+        // incresed duration for error messages
+        if (type === "error" && duration === 5000) {
+            duration = 8000; // 8 seconds for error messages
+        }
+        const statusEl = document.createElement('div');
+        statusEl.className = `status ${type}`;
+        statusEl.innerHTML = `
+            <i class="fas fa-${icons[type]} status-icon"></i>
+            <div class="status-content">${message}</div>
+            <button class="status-close">&times;</button>
+        `;
+        
+        statusContainer.appendChild(statusEl);
+        
+        // Trigger reflow to enable animation
+        void statusEl.offsetWidth;
+        statusEl.classList.add('show');
+        
+        // Close button functionality
+        const closeBtn = statusEl.querySelector('.status-close');
+        closeBtn.addEventListener('click', () => {
+            dismissStatus(statusEl);
+        });
+        
+        // Auto-dismiss after duration
+        if (duration > 0) {
+            setTimeout(() => {
+                dismissStatus(statusEl);
+            }, duration);
+        }
+        
+        return statusEl;
+    }
+    
+    function dismissStatus(statusEl) {
+        if (!statusEl.classList.contains('hide')) {
+            statusEl.classList.add('hide');
+            statusEl.addEventListener('animationend', () => {
+                statusEl.remove();
+            });
+        }
+    }
+    
+    // Scanner simulation
+    loadScannersBtn.addEventListener('click', function() {
+        showStatus("Searching for available scanners...", "info");
+        
+        setTimeout(function() {
+            scannerList.innerHTML = `
+                <option value="">Select scanner</option>
+                <option value="scanner1">HP ScanJet Pro</option>
+                <option value="scanner2">Epson V600</option>
+            `;
+            scannerList.disabled = false;
+            scanBtn.disabled = false;
+            showStatus("Scanners loaded successfully", "success");
+        }, 1000);
+    });
+    
+    // Scan button handler
+    scanBtn.addEventListener('click', function() {
+        if (!scannerList.value) {
+            showStatus("Please select a scanner first", "error");
+            return;
+        }
+        
+        showStatus("Initializing document scan...", "info");
+        loadingDiv.style.display = "flex";
+        
+        setTimeout(function() {
+            uploadedImage.src = "https://via.placeholder.com/600x400/4361ee/ffffff?text=Scanned+ID";
+            uploadedImage.style.display = "block";
+            loadingDiv.style.display = "none";
+            showStatus("Document scanned successfully", "success");
+        }, 2000);
+    });
+    
+    // Drag and drop functionality
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(function(eventName) {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    ['dragenter', 'dragover'].forEach(function(eventName) {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+    
+    ['dragleave', 'drop'].forEach(function(eventName) {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+    
+    function highlight() {
+        dropArea.style.borderColor = "var(--primary-color)";
+        dropArea.style.backgroundColor = "rgba(67, 97, 238, 0.05)";
+    }
+    
+    function unhighlight() {
+        dropArea.style.borderColor = "#ccc";
+        dropArea.style.backgroundColor = "";
+    }
+    
+    dropArea.addEventListener('drop', handleDrop, false);
+    dropArea.addEventListener('click', function() {
+        fileInput.click();
+    });
+    
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }
+    
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            handleFiles(this.files);
+        }
+    });
+    
+    function handleFiles(files) {
+        if (files.length === 0) return;
+        
+        const file = files[0];
+        if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
+            showStatus("Please select an image or PDF file", "error");
+            return;
+        }
+        
+        showStatus("Loading document...", "info");
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            uploadedImage.src = e.target.result;
+            uploadedImage.style.display = "block";
+            showStatus("Document loaded successfully", "success");
+        };
+        reader.readAsDataURL(file);
+    }
+    
+    // Process button handler
+    processBtn.addEventListener('click', async function () {
+        if (!uploadedImage.src || uploadedImage.src === window.location.href) {
+            showStatus("Please upload or scan a document first", "error");
+            return;
+        }
+
+        showStatus("Processing document... This may take a moment", "info");
+        loadingDiv.style.display = "flex";
+
+        try {
+            // Prepare the form data
+            const formData = new FormData();
+
+            // Check if the image is from a file upload or scanner simulation
+            if (uploadedImage.src.startsWith('data:')) {
+                // Convert data URL to blob
+                const blob = await fetch(uploadedImage.src).then(r => r.blob());
+                formData.append('image', blob, 'document.png');
+            } else {
+                // For simulated scanner images (placeholder), we'll use the URL
+                // Note: In a real app, you'd want to upload the actual scanned image
+                const response = await fetch(uploadedImage.src);
+                const blob = await response.blob();
+                formData.append('image', blob, 'scanned_document.png');
+            }
+
+            // Send to OCR processing API
+            const response = await fetch('http://127.0.0.1:5000/process', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`${errorText} -status- ${response.status} ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            console.log('Processing result:', result);
+            // Display the processed image
+            if (result.processed_image) {
+                processedImage.src = `data:image/png;base64,${result.processed_image}`;
+                processedImage.style.display = "block";
+            }
+
+            // Update extracted data fields
+            if (result.data) {
+                console.log('Extracted data:', result.data);
+                document.getElementById('firstName').textContent = result.data.firstname || "N/A";
+                document.getElementById('secondName').textContent = result.data.parentfullname || "N/A";
+                document.getElementById('fullName').textContent = result.data.firstname+" "+result.data.parentfullname || "N/A";
+                document.getElementById('nationalId').textContent = result.data.nationalID || "N/A";
+                document.getElementById('address').textContent = result.data.address || "N/A";
+                document.getElementById('birth').textContent = result.data.birth || "N/A";
+                document.getElementById('gov').textContent = result.data.gov || "N/A";
+                document.getElementById('gender').textContent = result.data.gender || "N/A";
+            }
+
+            showStatus("National ID processed successfully", "success");
+        } catch (error) {
+            console.error('Processing error:', error);
+            showStatus("Failed to process the National ID Card: " + error.message, "error");
+        } finally {
+            loadingDiv.style.display = "none";
+        }
+    });
+    
+    // Edit/Save functionality for extracted data
+    document.querySelectorAll('.edit-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetElement = document.getElementById(targetId);
+            const saveBtn = this.nextElementSibling;
+            
+            // Enable editing
+            targetElement.contentEditable = "true";
+            targetElement.classList.add('editable');
+            targetElement.focus();
+            
+            // Toggle button visibility
+            this.style.display = 'none';
+            saveBtn.style.display = 'inline-flex';
+            
+            // Track that this field is being edited
+            editedFields.add(targetId);
+            updateSaveAllButton();
+        });
+    });
+    
+    document.querySelectorAll('.save-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetElement = document.getElementById(targetId);
+            const editBtn = this.previousElementSibling;
+            
+            // Disable editing
+            targetElement.contentEditable = "false";
+            targetElement.classList.remove('editable');
+            
+            // Toggle button visibility
+            this.style.display = 'none';
+            editBtn.style.display = 'inline-flex';
+            
+            // Remove from edited fields
+            editedFields.delete(targetId);
+            updateSaveAllButton();
+            
+            showStatus("Changes saved", "success", 2000);
+            
+            // Update full name if first or second name was edited
+            if (targetId === 'firstName' || targetId === 'secondName') {
+                const firstName = document.getElementById('firstName').textContent;
+                const secondName = document.getElementById('secondName').textContent;
+                document.getElementById('fullName').textContent = `${firstName} ${secondName}`;
+            }
+        });
+    });
+    
+    // Copy buttons functionality
+    document.querySelectorAll('.copy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const targetElement = document.getElementById(targetId);
+            const textToCopy = targetElement.textContent;
+            
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+                btn.style.background = "var(--success-color)";
+                btn.style.color = "white";
+                btn.style.borderColor = "var(--success-color)";
+                
+                setTimeout(function() {
+                    btn.innerHTML = originalText;
+                    btn.style.background = "";
+                    btn.style.color = "";
+                    btn.style.borderColor = "";
+                }, 1500);
+                
+                showStatus("Copied to clipboard", "success", 2000);
+            }).catch(function() {
+                showStatus("Failed to copy text", "error", 2000);
+            });
+        });
+    });
+    
+    // Save All button functionality
+    saveAllBtn.addEventListener('click', function() {
+        document.querySelectorAll('.save-btn').forEach(btn => {
+            if (btn.style.display === 'inline-flex') {
+                btn.click();
+            }
+        });
+        
+        showStatus("All changes saved", "success");
+        saveAllBtn.style.display = 'none';
+    });
+    
+    // Update Save All button visibility
+    function updateSaveAllButton() {
+        saveAllBtn.style.display = editedFields.size > 0 ? 'block' : 'none';
+    }
+    
+    // Handle Enter key in editable fields
+    document.querySelectorAll('.info-text').forEach(field => {
+        field.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const saveBtn = this.closest('.info-value').querySelector('.save-btn');
+                if (saveBtn) saveBtn.click();
+            }
+        });
+    });
+});

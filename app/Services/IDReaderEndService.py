@@ -7,42 +7,60 @@ import base64
 import json
 from app.Services.OCRHandler import GeminiOCRreader
 from app.utils.logger import get_logger
+from app.Database.dBService import OCRDB
+# from run import app
 logger = get_logger(__name__)
+
 
 class IDReaderEndService:
     _instance = None
-    
+    DBService_Mngr = None
     # This is a singleton class, ensuring only one instance exists
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
-            cls._instance = super(IDReaderEndService, cls).__new__(cls, *args, **kwargs)
+            cls._instance = super(IDReaderEndService, cls).__new__(cls)
         return cls._instance
+    
     # This ensures that the service is a singleton and only initialized once
     def __init__(self):
         if not hasattr(self, 'initialized'):
             self.initialized = True
+            # Initialize the DBService_Mngr if not already done
+            self.DBService_Mngr = OCRDB()
             # Initialize the service only once
             # This ensures that the service is a singleton and only initialized once
             self._initialize_service()
     # This method is called to initialize the service
+
     def _initialize_service(self):
         # Perform any necessary initialization here
-        # For example, setting up database connections, loading configurations, etc.
         print("IDReaderEndService initialized")
     # This method processes the request data
-    def process_request(self, request_data):
-        # Process the request data
-        # This is a placeholder for actual processing logic
-        print(f"Processing request data: {request_data}")
-        return {"status": "success", "data": request_data}
-    
+
     #----------------- Business Logic -----------------
-    # ---------------- ID Card Reader ----------------
+    # def iDCardreader(self,Imagefile,ext):
+    #     logger.debug("HIIIIIIIIIIIIIII")
+    #     self.DBService_Mngr.increment_scan_count()
+    #     logger.debug("Total scans updated successfully in the database")
+    #     return {},None
+    
     def iDCardreader(self,Imagefile,ext):
         logger.debug("Starting ID Card Reader processing")
+        warningMSG=None
         if not Imagefile:
                 raise ValueError("No image file provided")
-
+        # Validate the subscription status
+        logger.debug("Validating subscription status")
+        is_valid, MSG = self.DBService_Mngr.validate_subscription()
+        if not is_valid:
+            logger.warning("Subscription validation failed: %s", MSG)
+            raise ValueError(MSG)
+        else:
+            logger.debug("iDCardreaderORG::Subscription is valid")
+            if MSG:
+                logger.warning("Warning message: %s", MSG)
+                warningMSG= MSG
+        
         # Convert bytes to NumPy array
         nparr = np.frombuffer(Imagefile, np.uint8)
         # Decode into an OpenCV image (BGR format, same as cv2.imread)
@@ -52,13 +70,25 @@ class IDReaderEndService:
         try:
             processedImage=self._detect_and_process_id_card(cv2Img)
         except Exception as e:
-            raise Exception(f"Error While reading the ID card labels in the image: {str(e)}")
+            raise Exception(e)
         # Perform OCR processing on the image file using GeminiOCRreader
         logger.debug("Start OCR extraction Process")
         ocrResults= self._OCRMethod(Imagefile,ext)
+        logger.debug("OCR Results type: %s", type(ocrResults))
         logger.debug("OCR results: %s", ocrResults)
+        if not ocrResults.get('nationalID'):
+            raise ValueError("No national ID number found in the OCR results:%s", ocrResults)
+        # Decode the Egyptian national ID
+        logger.debug("Decoding Egyptian national ID")
+        ocrResults.update(self._decode_egyptian_id(ocrResults.get('nationalID')))
+        logger.debug("Full Decoded ID information: %s", ocrResults)
         logger.debug("ID card Process completed successfully")
-        return ocrResults,processedImage
+        # Udate the subscription total scans in the database
+        updated, errorMSG = self.DBService_Mngr.increment_scan_count()
+        if not updated:
+            raise Exception(f"Error updating scan count in the database: {errorMSG}")
+        logger.debug("Total scans updated successfully in the database")
+        return ocrResults,processedImage,warningMSG
     # ---------------- OCR Method ----------------
     def _OCRMethod(self, img_bytes,ext):
         try:
@@ -78,11 +108,14 @@ class IDReaderEndService:
         return self._parse_json(json_part)
     # ---------------- ID label detection and processing ----------------
     def _detect_and_process_id_card(self, image):
-        print("Detecting ID card...")
+        logger.debug("Detecting ID card Lebels in the image...")
         # Load the ID card detection model
         id_card_model = YOLO('app\Services\models\detect_id_card.pt')
         # Perform inference to detect the ID card
         id_card_results = id_card_model(image)
+        # Check if any ID card was detected
+        if not id_card_results or not id_card_results[0].boxes:
+            raise ValueError("No ID card detected in the image")
         # Crop the ID card from the image
         for result in id_card_results:
             for box in result.boxes:
@@ -150,9 +183,9 @@ class IDReaderEndService:
         birth_date = f"{full_year:04d}-{month:02d}-{day:02d}"
 
         return {
-            'Birth Date': birth_date,
-            'Governorate': governorate,
-            'Gender': gender
+            'birth': birth_date,
+            'gov': governorate,
+            'gender': gender
         }
     def _parse_json(self,json_string):
         try:
@@ -160,22 +193,34 @@ class IDReaderEndService:
             return json.loads(json_string)
         except json.JSONDecodeError as e:
             raise json.JSONDecodeError(f'Error decoding JSON: {str(e)}')
-        
-    def test_iDCardreader(self,Imagefile):
-        logger.debug("Testing ID Card Reader with dummy data")
-        type(Imagefile)
-        logger.debug(f"Imagefile type: {type(Imagefile)}")
-        if not Imagefile:
-            raise ValueError("No image file provided")
-        data= {}
-        result = {
-            'first_name': data.get('firstname', "Ahmed"),
-            'second_name': data.get('parname', "Ali Ahmed"),
-            'full_name': f"{data.get('firstname', 'Ahmed')} {data.get('parname', 'Ali Ahmed')}",
-            'national_id': data.get('nationalID', "1223456"),
-            'address': data.get('address', "AdressTest"),
-            'birth': data.get('birthdate', "01/04/1151"),
-            'gov': data.get('gov', "Giza"),
-            'gender': data.get('gender', "Male"),
-        }
-        return result
+    def get_subscription_status(self):
+        """
+        Retrieves the current subscription status from the database.
+        """
+        logger.debug("Retrieving subscription status")
+        subscriptionDict = self.DBService_Mngr.get_subscription_status()
+
+        if not subscriptionDict:
+            raise ValueError("No subscription found in the database")
+        return subscriptionDict
+    # ---------------- User Authentication ----------------
+    def validate_user_credentials(self, username, password):
+        logger.debug("Login method called with username: %s", username)
+        adminusr = self.DBService_Mngr.login_admin_user(username, password)
+        if adminusr:
+            logger.debug("Login successful for user: %s", username)
+            return adminusr
+        else:
+            logger.warning("Login failed for user: %s", username)
+            raise ValueError("Invalid username or password")
+    # ---------------- Subscription ReNew ----------------
+    def reNew_Subscriptiobn(self):
+       logger.debug("Renew the Subscription Process")
+       subscription = self.DBService_Mngr.renew_subscription()
+       if subscription:
+           logger.debug("Subscription Renewed")
+           return subscription
+       else:
+           logger.debug("Unable to Renewed the Subscription")
+           return None
+       
