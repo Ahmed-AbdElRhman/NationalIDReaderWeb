@@ -44,7 +44,7 @@ class IDReaderEndService:
     #     logger.debug("Total scans updated successfully in the database")
     #     return {},None
     
-    def iDCardreader(self,Imagefile,ext):
+    def iDCardreader(self,Imagefile,ext,detectIDcard=False):
         logger.debug("Starting ID Card Reader processing")
         warningMSG=None
         if not Imagefile:
@@ -67,20 +67,29 @@ class IDReaderEndService:
         cv2Img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
         logger.debug("Detecting ID card labels in the image file",)
         # read the ID card labels
-        try:
-            processedImage=self._detect_and_process_id_card(cv2Img)
-        except Exception as e:
-            raise Exception(e)
+        if detectIDcard:
+            logger.debug("ID card detection is enabled, detecting and processing ID card in the image")
+            try:
+                processedImage=self._detect_and_process_id_card(cv2Img)
+            except Exception as e:
+                raise Exception(e)
+        else:
+            logger.debug("ID card detection is disabled, skipping ID card detection")
+            processedImage=None
+            # Convert to Base64 string processed_image
+            # _, buffer = cv2.imencode(os.getenv('PROCESSED_IMAGE_TYPE','.jpg'), cv2Img)
+            # processedImage = base64.b64encode(buffer).decode('utf-8')
         # Perform OCR processing on the image file using GeminiOCRreader
         logger.debug("Start OCR extraction Process")
         ocrResults= self._OCRMethod(Imagefile,ext)
         logger.debug("OCR Results type: %s", type(ocrResults))
         logger.debug("OCR results: %s", ocrResults)
-        if not ocrResults.get('nationalID'):
+        nationalID=ocrResults["NationalID"].get('english')
+        if not nationalID:
             raise ValueError("No national ID number found in the OCR results:%s", ocrResults)
         # Decode the Egyptian national ID
         logger.debug("Decoding Egyptian national ID")
-        ocrResults.update(self._decode_egyptian_id(ocrResults.get('nationalID')))
+        ocrResults.update(self._decode_egyptian_id(nationalID))
         logger.debug("Full Decoded ID information: %s", ocrResults)
         logger.debug("ID card Process completed successfully")
         # Udate the subscription total scans in the database
@@ -132,34 +141,34 @@ class IDReaderEndService:
     # ---------------- National ID Decoder ----------------
     def _decode_egyptian_id(self, id_number):
         governorates = {
-            '01': 'Cairo',
-            '02': 'Alexandria',
-            '03': 'Port Said',
-            '04': 'Suez',
-            '11': 'Damietta',
-            '12': 'Dakahlia',
-            '13': 'Ash Sharqia',
-            '14': 'Kaliobeya',
-            '15': 'Kafr El - Sheikh',
-            '16': 'Gharbia',
-            '17': 'Monoufia',
-            '18': 'El Beheira',
-            '19': 'Ismailia',
-            '21': 'Giza',
-            '22': 'Beni Suef',
-            '23': 'Fayoum',
-            '24': 'El Menia',
-            '25': 'Assiut',
-            '26': 'Sohag',
-            '27': 'Qena',
-            '28': 'Aswan',
-            '29': 'Luxor',
-            '31': 'Red Sea',
-            '32': 'New Valley',
-            '33': 'Matrouh',
-            '34': 'North Sinai',
-            '35': 'South Sinai',
-            '88': 'Foreign'
+            '01': {"arabic": "القاهرة", "english": "Cairo"},
+            '02': {"arabic": "الإسكندرية", "english": "Alexandria"},
+            '03': {"arabic": "بورسعيد", "english": "Port Said"},
+            '04': {"arabic": "السويس", "english": "Suez"},
+            '11': {"arabic": "دمياط", "english": "Damietta"},
+            '12': {"arabic": "الدقهلية", "english": "Dakahlia"},
+            '13': {"arabic": "الشرقية", "english": "Ash Sharqia"},
+            '14': {"arabic": "القليوبية", "english": "Kaliobeya"},
+            '15': {"arabic": "كفر الشيخ", "english": "Kafr El-Sheikh"},
+            '16': {"arabic": "الغربية", "english": "Gharbia"},
+            '17': {"arabic": "المنوفية", "english": "Monoufia"},
+            '18': {"arabic": "البحيرة", "english": "El Beheira"},
+            '19': {"arabic": "الإسماعيلية", "english": "Ismailia"},
+            '21': {"arabic": "الجيزة", "english": "Giza"},
+            '22': {"arabic": "بني سويف", "english": "Beni Suef"},
+            '23': {"arabic": "الفيوم", "english": "Fayoum"},
+            '24': {"arabic": "المنيا", "english": "El Minya"},
+            '25': {"arabic": "أسيوط", "english": "Assiut"},
+            '26': {"arabic": "سوهاج", "english": "Sohag"},
+            '27': {"arabic": "قنا", "english": "Qena"},
+            '28': {"arabic": "أسوان", "english": "Aswan"},
+            '29': {"arabic": "الأقصر", "english": "Luxor"},
+            '31': {"arabic": "البحر الأحمر", "english": "Red Sea"},
+            '32': {"arabic": "الوادي الجديد", "english": "New Valley"},
+            '33': {"arabic": "مطروح", "english": "Matrouh"},
+            '34': {"arabic": "شمال سيناء", "english": "North Sinai"},
+            '35': {"arabic": "جنوب سيناء", "english": "South Sinai"},
+            '88': {"arabic": "أجنبي", "english": "Foreign"}
         }
 
         century_digit = int(id_number[0])
@@ -178,12 +187,21 @@ class IDReaderEndService:
         else:
             raise ValueError("Invalid century digit")
 
-        gender = "Male" if gender_code % 2 != 0 else "Female"
-        governorate = governorates.get(governorate_code, "Unknown")
-        birth_date = f"{full_year:04d}-{month:02d}-{day:02d}"
+        if gender_code % 2 != 0:  # Odd → Male
+            gender = {"arabic": "ذكر", "english": "Male"}
+        else:  # Even → Female
+            gender = {"arabic": "أنثى", "english": "Female"}
 
+        governorate = governorates.get(governorate_code, {"arabic": "غير معروف", "english": "Unknown"})
+        birth_date_en = f"{full_year:04d}/{month:02d}/{day:02d}"
+        # English → Arabic digit mapping
+        en_to_ar = {
+            "0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
+            "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"
+        }
+        birth_date_ar = "".join(en_to_ar[ch] if ch.isdigit() else ch for ch in birth_date_en)
         return {
-            'birth': birth_date,
+            'birth': {'arabic':birth_date_ar , 'english': birth_date_en},
             'gov': governorate,
             'gender': gender
         }
@@ -213,10 +231,19 @@ class IDReaderEndService:
         else:
             logger.warning("Login failed for user: %s", username)
             raise ValueError("Invalid username or password")
+    # ---------------- Update Admin User ----------------
+    def update_admin_password(self,username,currentpassword,new_password):
+        logger.debug("Upadete User Password: %s", new_password)
+        if self.DBService_Mngr.update_admin_password(username,currentpassword,new_password):
+            logger.warning("user Updated successful")
+            return True
+        else:
+            logger.warning("Unable to Update the user Password")
+            raise ValueError("Invalid username or Password")
     # ---------------- Subscription ReNew ----------------
-    def reNew_Subscriptiobn(self):
+    def reNew_Subscriptiobn(self,MAX_SCANS,subscription_expiry_days):
        logger.debug("Renew the Subscription Process")
-       subscription = self.DBService_Mngr.renew_subscription()
+       subscription = self.DBService_Mngr.renew_subscription(MAX_SCANS,subscription_expiry_days)
        if subscription:
            logger.debug("Subscription Renewed")
            return subscription

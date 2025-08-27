@@ -45,7 +45,7 @@ class IDReaderAPI_Mngr:
         try:
             logger.debug("Invoking IDReaderEndService for ID card readingon the image file %s",
                      file.filename if hasattr(file, 'filename') else '-- unknown --')
-            extracted_data, processed_image,warningMSG = IDReaderAPI_Mngr._iDReaderEndService_Mngr.iDCardreader(img_bytes,ext)
+            extracted_data, processed_image,warningMSG = IDReaderAPI_Mngr._iDReaderEndService_Mngr.iDCardreader(img_bytes,ext,detectIDcard=False)
         except Exception as e:
             logger.error(f"Error while extracting data: {str(e)}", exc_info=True)
             return jsonify({"message": str(e)}), 400
@@ -63,7 +63,8 @@ class IDReaderAPI_Mngr:
         """
         logger.debug("Processing login request")
         data = request.form
-        logger.debug("Hiiiiiiiiiiiii data: %s", data['username'])
+        logger.debug("Login request form data: %s", data)
+        # logger.debug("login request data: %s", data['username'])
         if not data or 'username' not in data or 'password' not in data:
             logger.error("Invalid login request: Missing username or password")
             return jsonify({"message": "Username and password are required"}), 400
@@ -109,15 +110,51 @@ class IDReaderAPI_Mngr:
         return jsonify({"message": "Logout successful"}), 200
     
     @staticmethod
-    def reNew_Subscriptiobn():
+    def renew_Subscriptiobn():
         """
         Handles the Subscription Renew Request.
         """
-        subscription = IDReaderAPI_Mngr._iDReaderEndService_Mngr.reNew_Subscriptiobn()
+        logger.debug("Renew the Subscription Process")
+        data = request.form
+        logger.debug("Renew request data:", data)
+        if not data or 'expiryDays' not in data or 'maxScans' not in data:
+            logger.error("Invalid renew request: Missing expiryDays or maxScans")
+            return jsonify({"message": "Invalid renew request: Missing expiryDays or maxScans"}), 400
+        # chech if expiryDays and maxScans is valid numbers
+        if not data['expiryDays'].isdigit() or not data['maxScans'].isdigit():
+            logger.error("Invalid renew request: expiryDays and maxScans must be positive integers")
+            return jsonify({"message": "Invalid renew request: expiryDays and maxScans must be numbers"}), 400
+        expiryDays = int(data['expiryDays'])
+        maxScans = int(data['maxScans'])
+        if expiryDays <= 0 or maxScans <= 0:
+            logger.error("Invalid renew request: expiryDays and maxScans must be positive integers")
+            return jsonify({"message": "Invalid renew request: expiryDays and maxScans must be positive integers"}), 400
+        subscription = IDReaderAPI_Mngr._iDReaderEndService_Mngr.reNew_Subscriptiobn(maxScans,expiryDays)
         if subscription:
             logger.debug("Subscription Renewed")
             return jsonify({"message": "Subscription Renewed"}), 200
         else:
             logger.error("Error unable tot renew the subscription")
             return jsonify({"message": "Error unable tot renew the subscription"}), 500
-       
+            
+    @staticmethod
+    def update_admin_password():
+        """
+        Handles the Update User Request.
+        """
+        data = request.form
+        if not data or 'newpassword' not in data:
+            logger.error("Invalid update password request: Missing newpassword")
+            return jsonify({"message": "Invalid update password request: Missing newpassword"}), 400
+        username =data['username']
+        currentpassword =data['currentpassword']
+        newpassword =data['newpassword']
+        # print params for debug
+        logger.debug("Update user request data: username=%s, currentpassword=%s, newpassword=%s", username, currentpassword, newpassword)
+        try:
+            IDReaderAPI_Mngr._iDReaderEndService_Mngr.update_admin_password(username,currentpassword,newpassword)
+            logger.debug("User password updated successfully for username: %s", username)
+            return jsonify({"message": "User password updated successfully"}), 200
+        except Exception as e:
+            logger.error("Error Updating user password: %s", str(e))
+            return jsonify({"message": str(e)}), 500

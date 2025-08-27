@@ -1,0 +1,209 @@
+<html>
+
+<head>
+    <title>Use Dynamic Web TWAIN's built-in Events</title>
+    <script type="text/javascript" src="../static/Resources/dynamsoft.webtwain.initiate.js"> </script>
+    <script type="text/javascript" src="../static/Resources/dynamsoft.webtwain.config.js"> </script>
+	<style>
+input[type="button"] {
+  border: 1px solid #0062ff; 
+  color: #0062ff; 
+  background: transparent; 
+  font-size: 18px; 
+  padding: 4px 8px 4px 8px!important;
+  margin-bottom: 10px;
+}
+
+.image-preview {
+    max-width: 400px;
+    max-height: 300px;
+    border: 2px solid #ddd;
+    margin: 10px 0;
+    display: none; /* Initially hidden */
+}
+
+.image-preview.show {
+    display: block;
+}
+</style>
+</head>
+
+<body>
+    <input type="button" value="Scan" onclick="AcquireImage();"/>
+    <input type="button" value="Send to Server" onclick="sendToServer();" id="sendBtn" style="display: none;"/>
+    <br />
+    <img id="uploadedImage" class="image-preview" alt="Uploaded image">
+    <br />
+
+    <!-- dwtcontrolContainer is the default div id for Dynamic Web TWAIN control. 
+         If you need to rename the id, you should also change the id in the dynamsoft.webtwain.config.js accordingly. -->
+
+    <div id="dwtcontrolContainer" style="display: none;"></div>
+
+    <script type="text/javascript">
+     Dynamsoft.WebTwainEnv.Containers = [{ ContainerId: 'dwtcontrolContainer', Width: 400, Height: 500 }];
+        Dynamsoft.WebTwainEnv.ProductKey = 'f0068NQAAAN5kpjXn/PASaNwnk/vqnHDZY1ImTHm2SaLVmPnvSGsdsmRsNZz9GgjaAvmMkl/jye68RcbyYIVgty4MdmZfLvw=;f0068NQAAAF9P19JZGVTyVGCPlrFYlih+xSxi3A7HyTYrKA1mOlwsyqIiIxdjb2kAxSfvBxzR4A8DQdfTqVoWMMZlScXLKz4=';
+        Dynamsoft.WebTwainEnv.Trial = false;
+        Dynamsoft.WebTwainEnv.ResourcesPath = 'Resources';
+        Dynamsoft.WebTwainEnv.AutoLoad = true;
+        
+        var DWObject;
+        var docType = Dynamsoft.EnumDWT_ImageType.IT_PDF;
+        var scannedImageData = null; // Store the base64 data for sending to server
+        
+        function Dynamsoft_OnReady() {
+            DWObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
+            if (DWObject) {
+                DWObject.RegisterEvent('OnPostAllTransfers', function () {
+                    try {
+                        createImageBase64();
+                        // Don't remove images immediately - wait until after processing
+                    }
+                    catch(err) {
+                        alert(err.message);
+                    }
+                });
+            }
+        }
+        
+        function Dynamsoft_OnPostTransfer() {
+            updateLargeViewer();
+        }
+        
+        function Dynamsoft_OnPostLoad(path, name, type) {
+            updateLargeViewer();
+        }
+        
+        function Dynamsoft_OnMouseClick() {
+            updateLargeViewer();
+        }
+        
+        function AcquireImage() {
+            if (DWObject) {
+                DWObject.SelectSource(function () {
+                    var OnAcquireImageSuccess, OnAcquireImageFailure;
+                    OnAcquireImageSuccess = OnAcquireImageFailure = function () {
+                        DWObject.CloseSource();
+                    };
+                    DWObject.OpenSource();
+                    DWObject.IfDisableSourceAfterAcquire = true;
+                    DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
+                }, function () {
+                    console.log('SelectSource failed!');
+                });
+            }
+        }
+        
+        function updateLargeViewer() {
+            DWObject.CopyToClipboard(DWObject.CurrentImageIndexInBuffer);
+            DWObjectLargeViewer.LoadDibFromClipboard();
+        }	
+
+        function createImageBase64() {
+            var aryIndices = [];
+            for (var i = 0; i < DWObject.HowManyImagesInBuffer; i++) {
+                aryIndices.push(i);
+            }
+            
+            // Convert to JPEG for display (better for web display than PDF)
+            var displayType = Dynamsoft.EnumDWT_ImageType.IT_JPG;
+            
+            DWObject.ConvertToBase64(
+                aryIndices,
+                displayType,
+                function(result, indices, type) {
+                    // Get the base64 data
+                    var base64Data = result.getData(0, result.getLength());
+                    
+                    // Display the image in the img element
+                    var imageElement = document.getElementById('uploadedImage');
+                    imageElement.src = 'data:image/jpeg;base64,' + base64Data;
+                    imageElement.classList.add('show');
+                    
+                    // Store the data for sending to server
+                    scannedImageData = base64Data;
+                    
+                    // Show the send button
+                    document.getElementById('sendBtn').style.display = 'inline-block';
+                    
+                    console.log('Image displayed successfully');
+                    
+                    // Also set the parent element value if needed
+                    if (parent.document.getElementById('imageurlid')) {
+                        parent.document.getElementById('imageurlid').value = base64Data;
+                    }
+                    
+                    // Clean up - remove images from buffer
+                    setTimeout(function() {
+                        DWObject.RemoveAllImages();
+                    }, 1000);
+                },
+                function(errorCode, errorString) {
+                    console.log('Error converting to base64: ' + errorString);
+                    alert('Error processing image: ' + errorString);
+                }
+            );
+        }
+        
+        function sendToServer() {
+            if (!scannedImageData) {
+                alert('No image data to send');
+                return;
+            }
+            
+            // Example of sending to server via fetch API
+            var formData = new FormData();
+            
+            // Convert base64 to blob
+            var byteCharacters = atob(scannedImageData);
+            var byteNumbers = new Array(byteCharacters.length);
+            for (var i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            var byteArray = new Uint8Array(byteNumbers);
+            var blob = new Blob([byteArray], {type: 'image/jpeg'});
+            
+            formData.append('scanned_image', blob, 'scanned_document.jpg');
+            
+            fetch('/your-server-endpoint', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Image sent to server successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error sending image to server: ' + error);
+            });
+            
+            // Alternative: send as base64 string in JSON
+            /*
+            fetch('/your-server-endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    image_data: scannedImageData,
+                    image_type: 'jpeg'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Image sent to server successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error sending image to server: ' + error);
+            });
+            */
+        }
+
+    </script>
+</body>
+
+</html>

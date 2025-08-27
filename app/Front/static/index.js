@@ -2,10 +2,12 @@
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+    
     const languageToggle = document.getElementById('languageToggle');
     
     // Set default language (English)
     let currentLanguage = 'english';
+    let extractedData ={}; 
     
     // Load saved language preference if available
     const savedLanguage = localStorage.getItem('ocrLanguage');
@@ -34,9 +36,29 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentLanguage === 'arabic') {
             labels[0].style.fontWeight = 'normal';
             labels[1].style.fontWeight = 'bold';
+            // Update extractedData
+            if (!extractedData || Object.keys(extractedData).length === 0) return;
+            document.getElementById('firstName').textContent = extractedData.firstname.arabic || "N/A";
+            document.getElementById('secondName').textContent = extractedData.parentfullname.arabic || "N/A";
+            document.getElementById('fullName').textContent = (extractedData.firstname.arabic + " " + extractedData.parentfullname.arabic) || "N/A";
+            document.getElementById('nationalId').textContent = extractedData.NationalID.arabic || "N/A";
+            document.getElementById('address').textContent = extractedData.address.arabic || "N/A";
+            document.getElementById('birth').textContent = extractedData.birth.arabic || "N/A";
+            document.getElementById('gov').textContent = extractedData.gov.arabic || "N/A";
+            document.getElementById('gender').textContent = extractedData.gender.arabic || "N/A";
         } else {
             labels[0].style.fontWeight = 'bold';
             labels[1].style.fontWeight = 'normal';
+            // Update extractedData
+            if (!extractedData || Object.keys(extractedData).length === 0) return;
+            document.getElementById('firstName').textContent = extractedData.firstname.english || "N/A";
+            document.getElementById('secondName').textContent = extractedData.parentfullname.english || "N/A";
+            document.getElementById('fullName').textContent = (extractedData.firstname.english + " " + extractedData.parentfullname.english) || "N/A";
+            document.getElementById('nationalId').textContent = extractedData.NationalID.english || "N/A";
+            document.getElementById('address').textContent = extractedData.address.english || "N/A";
+            document.getElementById('birth').textContent = extractedData.birth.english || "N/A";
+            document.getElementById('gov').textContent = extractedData.gov.english || "N/A";
+            document.getElementById('gender').textContent = extractedData.gender.english || "N/A";
         }
     }
     
@@ -402,16 +424,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Update extracted data fields
+            console.log('Extracted result data:', result.data);
             if (result.data) {
-                console.log('Extracted data:', result.data);
-                document.getElementById('firstName').textContent = result.data.firstname || "N/A";
-                document.getElementById('secondName').textContent = result.data.parentfullname || "N/A";
-                document.getElementById('fullName').textContent = (result.data.firstname + " " + result.data.parentfullname) || "N/A";
-                document.getElementById('nationalId').textContent = result.data.nationalID || "N/A";
-                document.getElementById('address').textContent = result.data.address || "N/A";
-                document.getElementById('birth').textContent = result.data.birth || "N/A";
-                document.getElementById('gov').textContent = result.data.gov || "N/A";
-                document.getElementById('gender').textContent = result.data.gender || "N/A";
+                console.log('Populating extracted data fields');
+                extractedData = result.data; // Store extracted data
+                if (currentLanguage === 'arabic') {
+                    console.log('Arabic');
+                    document.getElementById('firstName').textContent = extractedData.firstname.arabic || "N/A";
+                    document.getElementById('secondName').textContent = extractedData.parentfullname.arabic || "N/A";
+                    document.getElementById('fullName').textContent = (extractedData.firstname.arabic + " " + extractedData.parentfullname.arabic) || "N/A";
+                    document.getElementById('nationalId').textContent = extractedData.NationalID.arabic || "N/A";
+                    document.getElementById('address').textContent = extractedData.address.arabic || "N/A";
+                    document.getElementById('birth').textContent = extractedData.birth.arabic || "N/A";
+                    document.getElementById('gov').textContent = extractedData.gov.arabic || "N/A";
+                    document.getElementById('gender').textContent = extractedData.gender.arabic || "N/A";
+                } else {
+                    console.log('English');
+                    console.log(extractedData.firstname);
+                    document.getElementById('firstName').textContent = extractedData.firstname.english || "N/A";
+                    document.getElementById('secondName').textContent = extractedData.parentfullname.english || "N/A";
+                    document.getElementById('fullName').textContent = (extractedData.firstname.english + " " + extractedData.parentfullname.english) || "N/A";
+                    document.getElementById('nationalId').textContent = extractedData.NationalID.english || "N/A";
+                    document.getElementById('address').textContent = extractedData.address.english || "N/A";
+                    document.getElementById('birth').textContent = extractedData.birth.english || "N/A";
+                    document.getElementById('gov').textContent = extractedData.gov.english || "N/A";
+                    document.getElementById('gender').textContent = extractedData.gender.english || "N/A";
+                }
             }
             if( result.warning){
                 showStatus("Warning: " + result.warning, "warning");

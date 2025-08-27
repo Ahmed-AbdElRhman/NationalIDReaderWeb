@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 from typing import Optional
 from app.Database.models import AppSubscription, AdminUser
 # Load environment variables from .env file if it exists
-from dotenv import load_dotenv
+from dotenv import load_dotenv,set_key
 load_dotenv()  
 # import logging as logger
 
@@ -19,8 +19,8 @@ class OCRDB:
         self.db_path = db_path
         self.connection = None
         self.secret_key = os.getenv('SUBSCRIPTION_SECRET_KEY')
-        self.subscription_expiry_days = os.getenv('SUBSCRIPTION_EXPIRY_DAYS', 365)  # Default to 1 year
-        self.max_scans = os.getenv('MAX_SCANS', 11)  # Default to 1000 scans
+        self.subscription_expiry_days = int(os.getenv('SUBSCRIPTION_EXPIRY_DAYS', 365))  # Default to 1 year
+        self.max_scans = int(os.getenv('MAX_SCANS', 11))  # Default to 1000 scans
         self.subscription = None  # Cached subscription object
         self.adminUser = None  # Cached admin user object
         # Initialize the database and create initial subscription and admin user
@@ -349,7 +349,7 @@ class OCRDB:
         subscription.total_scans += 1
         return self.save_app_subscription(subscription),saveMSG
     
-    def renew_subscription(self) -> Optional[AppSubscription]:
+    def renew_subscription(self,MAX_SCANS,subscription_expiry_days) -> Optional[AppSubscription]:
         """Renew the subscription by creating a new one"""
         # Create a new subscription with current date and reset scan count
         new_subscription = AppSubscription(
@@ -357,6 +357,17 @@ class OCRDB:
             total_scans=0,
             is_active=True
         )
+        #Udate the env file with new values
+        try:
+            # Update the value in the .env file
+            dotenv_path = os.path.join(os.getcwd(), '.env')
+            set_key(dotenv_path, "MAX_SCANS", str(MAX_SCANS))
+            set_key(dotenv_path, "SUBSCRIPTION_EXPIRY_DAYS", str(subscription_expiry_days))
+            logger.info(f"Updated SUBSCRIPTION_EXPIRY_DAYS,MAX_SCANS to {subscription_expiry_days}:{MAX_SCANS} in {dotenv_path}")
+            self.subscription_expiry_days = subscription_expiry_days
+            self.max_scans = MAX_SCANS
+        except Exception as e:
+            raise Exception(f"Error updating .env file: {e}")      
         
         if self.save_app_subscription(new_subscription):
             logger.info("Subscription renewed successfully")
@@ -372,6 +383,7 @@ class OCRDB:
             return None
         subscriptionDict = subscription.to_dict()
         subscriptionDict["expiry_days"] = self.subscription_expiry_days
+        subscriptionDict["expiry_date"] = (subscription.install_date + timedelta(days=self.subscription_expiry_days)).isoformat()
         subscriptionDict["max_scans"] = self.max_scans
         return subscriptionDict
     
@@ -492,13 +504,21 @@ class OCRDB:
             self.save_admin_user(admin)
             logger.info("Admin last login updated")
     
-    def update_admin_password(self, new_password: str) -> bool:
+    def update_admin_password(self,username,currentpassword, new_password: str) -> bool:
         """Update the admin password"""
         admin = self.get_admin_user()
         if not admin:
             logger.warning("No admin user found to update password")
             return False
         
+        # Verify current password and username
+        if admin.username != username:
+            logger.warning("Username does not match")
+            return False
+        if not admin.check_password(currentpassword):
+            logger.warning("Current password does not match")
+            return False
+        # Update to new password
         admin.set_password(new_password)
         return self.save_admin_user(admin)
     
@@ -514,41 +534,41 @@ class OCRDB:
 
 
 # Example usage
-if __name__ == "__main__":
-    # Initialize the database
-    db = OCRDB()
-    new_subscription = db.renew_subscription()
-    print("New subscription:", new_subscription)
-    # Create initial subscription if it doesn't exist
-    subscription = db.get_app_subscription()
-    print("Current subscription:", subscription)
-    if not subscription:
-        print("Creating new subscription...")
-        subscription = db.createNew_app_subscription()
+# if __name__ == "__main__":
+#     # Initialize the database
+#     db = OCRDB()
+#     new_subscription = db.renew_subscription()
+#     print("New subscription:", new_subscription)
+#     # Create initial subscription if it doesn't exist
+#     subscription = db.get_app_subscription()
+#     print("Current subscription:", subscription)
+#     if not subscription:
+#         print("Creating new subscription...")
+#         subscription = db.createNew_app_subscription()
     
-    # Create admin user if it doesn't exist
-    admin = db.get_admin_user()
-    if not admin:
-        print("Creating admin user...")
-        admin = db.createNew_admin_user("admin", "secure_password")
+#     # Create admin user if it doesn't exist
+#     admin = db.get_admin_user()
+#     if not admin:
+#         print("Creating admin user...")
+#         admin = db.createNew_admin_user("admin", "secure_password")
     
-    # Test subscription validation
-    print("Subscription validation:", db.validate_subscription())
+#     # Test subscription validation
+#     print("Subscription validation:", db.validate_subscription())
     
-    # Test scan increment
-    print("Current scans:", subscription.total_scans)
-    db.increment_scan_count()
+#     # Test scan increment
+#     print("Current scans:", subscription.total_scans)
+#     db.increment_scan_count()
 
-    subscription = db.get_app_subscription()
-    print("Scans after increment:", subscription.total_scans)
+#     subscription = db.get_app_subscription()
+#     print("Scans after increment:", subscription.total_scans)
     
-    # Test admin authentication
-    print("Admin authentication:", db.verify_admin_password("P@ssw0rd"))
+#     # Test admin authentication
+#     print("Admin authentication:", db.verify_admin_password("P@ssw0rd"))
     
-    # # Test subscription renewal
-    # print("Renewing subscription...")
-    # new_subscription = db.renew_subscription()
-    # print("New subscription:", new_subscription)
+#     # # Test subscription renewal
+#     # print("Renewing subscription...")
+#     # new_subscription = db.renew_subscription()
+#     # print("New subscription:", new_subscription)
     
-    # Close the connection when done
-    db.close()
+#     # Close the connection when done
+#     db.close()

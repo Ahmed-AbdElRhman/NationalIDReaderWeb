@@ -12,7 +12,7 @@ def index():
 
 @IDReaderEndPoints.route("/scann", methods=["GET"])
 def scann():
-    return render_template("/Scanner/index.html")
+    return render_template("scanToImage.html")
 
 @IDReaderEndPoints.route("/process", methods=["POST"])
 def process():
@@ -34,12 +34,17 @@ def logout():
     logger.debug("Logging out user")
     return IDReaderAPI_Mngr.logout()
 
+@IDReaderEndPoints.route("/admin/updateuser", methods=["POST"])
+def update_admin_password():
+    logger.debug("Update user")
+    return IDReaderAPI_Mngr.update_admin_password()
+
 @IDReaderEndPoints.route("/admin/subscription")
 def get_subscription_status():
     logger.debug("Fetching subscription status")
     return IDReaderAPI_Mngr.get_subscription_status()
 
-@IDReaderEndPoints.route("/admin/renewsubscription")
-def get_subscription_status():
+@IDReaderEndPoints.route("/admin/renewsubscription", methods=["POST"])
+def renew_subscription():
     logger.debug("ReNew the Subscription")
-    return IDReaderAPI_Mngr.reNew_Subscriptiobn()
+    return IDReaderAPI_Mngr.renew_Subscriptiobn()
