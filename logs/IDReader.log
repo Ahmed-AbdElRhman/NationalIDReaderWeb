@@ -6560,3 +6560,878 @@ ValueError: ('No national ID number found in the OCR results:%s', {'firstname': 
 2025-08-27 07:13:04,427  INFO     127.0.0.1 - - [27/Aug/2025 07:13:04] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
 2025-08-27 07:13:05,251  INFO     127.0.0.1 - - [27/Aug/2025 07:13:05] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
 2025-08-27 07:13:05,251  INFO     127.0.0.1 - - [27/Aug/2025 07:13:05] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:15:50,520  DEBUG    Rendering admin page Filename::IDReaderEndPoints.py:24 
+2025-08-27 07:15:50,525  INFO     127.0.0.1 - - [27/Aug/2025 07:15:50] "GET /admin HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:15:50,582  INFO     127.0.0.1 - - [27/Aug/2025 07:15:50] "[36mGET /static/bootstrap-5.3.7-dist/css/bootstrap.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:15:50,607  INFO     127.0.0.1 - - [27/Aug/2025 07:15:50] "[36mGET /static/admin.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:15:50,610  INFO     127.0.0.1 - - [27/Aug/2025 07:15:50] "[36mGET /static/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:15:50,622  INFO     127.0.0.1 - - [27/Aug/2025 07:15:50] "GET /static/admin.js HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:15:53,200  DEBUG    Login User Filename::IDReaderEndPoints.py:29 
+2025-08-27 07:15:53,510  DEBUG    Processing login request Filename::IDReaderAPI_Mngr.py:64 
+2025-08-27 07:15:53,521  DEBUG    Login request form data: ImmutableMultiDict([('username', 'admin'), ('password', 'admin')]) Filename::IDReaderAPI_Mngr.py:66 
+2025-08-27 07:15:53,525  DEBUG    Validating user credentials for username: admin Filename::IDReaderAPI_Mngr.py:76 
+2025-08-27 07:15:53,530  DEBUG    Login method called with username: admin Filename::IDReaderEndService.py:226 
+2025-08-27 07:15:53,607  DEBUG    Returning cached admin user: AdminUser(id=1, username=admin, created_at=2025-08-26 03:08:27.628203+00:00) Filename::dBService.py:395 
+2025-08-27 07:15:54,157  INFO     Admin user Updated successfully Filename::dBService.py:424 
+2025-08-27 07:15:54,162  INFO     Admin user logged in successfully Filename::dBService.py:480 
+2025-08-27 07:15:54,165  DEBUG    Login successful for user: admin Filename::IDReaderEndService.py:229 
+2025-08-27 07:15:54,168  INFO     127.0.0.1 - - [27/Aug/2025 07:15:54] "POST /login HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:15:54,175  DEBUG    Fetching subscription status Filename::IDReaderEndPoints.py:44 
+2025-08-27 07:15:54,179  DEBUG    Fetching subscription status Filename::IDReaderAPI_Mngr.py:93 
+2025-08-27 07:15:54,181  DEBUG    Retrieving subscription status Filename::IDReaderEndService.py:218 
+2025-08-27 07:15:54,185  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 07:15:54,189  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 04:31:34.506977, total_scans=0, is_active=True), last_modified=2025-08-27 04:31:34.526746, verification_hash=dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5) Filename::dBService.py:111 
+2025-08-27 07:15:54,190  DEBUG    Subscription status Data fetched successfully: {'id': 1, 'install_date': datetime.datetime(2025, 8, 27, 4, 31, 34, 506977), 'total_scans': 0, 'is_active': True, 'last_modified': datetime.datetime(2025, 8, 27, 4, 31, 34, 526746), 'verification_hash': 'dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5', 'expiry_days': 10, 'expiry_date': '2025-09-06T04:31:34.506977', 'max_scans': 10} Filename::IDReaderAPI_Mngr.py:96 
+2025-08-27 07:15:54,195  INFO     127.0.0.1 - - [27/Aug/2025 07:15:54] "GET /admin/subscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:16:00,457  DEBUG    Logging out user Filename::IDReaderEndPoints.py:34 
+2025-08-27 07:16:00,461  DEBUG    Processing logout request Filename::IDReaderAPI_Mngr.py:108 
+2025-08-27 07:16:00,465  INFO     127.0.0.1 - - [27/Aug/2025 07:16:00] "GET /logout HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:16:03,209  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:16:03,277  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,282  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,293  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,299  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,315  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,370  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,383  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:16:03,507  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:16:03,511  INFO     127.0.0.1 - - [27/Aug/2025 07:16:03] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:18:29,641  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:18:29,684  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,693  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,702  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,715  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:18:29,774  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,776  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,803  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,824  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:18:29,940  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:18:29,955  INFO     127.0.0.1 - - [27/Aug/2025 07:18:29] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:03,032  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:19:03,123  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,150  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,159  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,177  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:19:03,232  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,233  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,269  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,270  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:03,416  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:03,418  INFO     127.0.0.1 - - [27/Aug/2025 07:19:03] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:38,198  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:19:38,241  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,250  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[33mGET /path/to/your-vendor-logo.png HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:38,256  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,263  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,328  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,330  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,364  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,364  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:38,504  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:38,510  INFO     127.0.0.1 - - [27/Aug/2025 07:19:38] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:55,177  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:19:55,218  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:55,235  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:55,239  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:55,243  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:55,284  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:55,285  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:19:55,459  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:19:55,461  INFO     127.0.0.1 - - [27/Aug/2025 07:19:55] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:17,895  INFO     127.0.0.1 - - [27/Aug/2025 07:23:17] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:23:17,941  INFO     127.0.0.1 - - [27/Aug/2025 07:23:17] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:17,952  INFO     127.0.0.1 - - [27/Aug/2025 07:23:17] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:17,955  INFO     127.0.0.1 - - [27/Aug/2025 07:23:17] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:17,965  INFO     127.0.0.1 - - [27/Aug/2025 07:23:17] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:18,327  INFO     127.0.0.1 - - [27/Aug/2025 07:23:18] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:18,327  INFO     127.0.0.1 - - [27/Aug/2025 07:23:18] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:18,373  INFO     127.0.0.1 - - [27/Aug/2025 07:23:18] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:18,380  INFO     127.0.0.1 - - [27/Aug/2025 07:23:18] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:19,221  INFO     127.0.0.1 - - [27/Aug/2025 07:23:19] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:19,224  INFO     127.0.0.1 - - [27/Aug/2025 07:23:19] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:30,141  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:23:30,185  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:30,194  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:30,199  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:30,199  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:30,248  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:30,251  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:30,509  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:30,567  INFO     127.0.0.1 - - [27/Aug/2025 07:23:30] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:46,555  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:23:46,678  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:46,706  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:46,708  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:46,714  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:23:46,750  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:46,753  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:46,915  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:46,916  INFO     127.0.0.1 - - [27/Aug/2025 07:23:46] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:54,747  INFO     127.0.0.1 - - [27/Aug/2025 07:23:54] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:23:54,802  INFO     127.0.0.1 - - [27/Aug/2025 07:23:54] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:23:54,802  INFO     127.0.0.1 - - [27/Aug/2025 07:23:54] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:23:54,805  INFO     127.0.0.1 - - [27/Aug/2025 07:23:54] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:24:02,669  INFO     127.0.0.1 - - [27/Aug/2025 07:24:02] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:06,145  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:24:06,270  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:06,314  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:24:06,329  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:06,350  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:06,352  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:06,619  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:06,620  INFO     127.0.0.1 - - [27/Aug/2025 07:24:06] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:07,427  INFO     127.0.0.1 - - [27/Aug/2025 07:24:07] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:24:07,491  INFO     127.0.0.1 - - [27/Aug/2025 07:24:07] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:24:20,517  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:24:20,588  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "GET /static/images/KSGLOGO.png HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:24:20,628  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:20,636  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:20,673  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:24:20,675  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:20,679  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:20,944  INFO     127.0.0.1 - - [27/Aug/2025 07:24:20] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:24:21,735  INFO     127.0.0.1 - - [27/Aug/2025 07:24:21] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:24:21,738  INFO     127.0.0.1 - - [27/Aug/2025 07:24:21] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:25:21,752  INFO     127.0.0.1 - - [27/Aug/2025 07:25:21] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:25:21,785  INFO     127.0.0.1 - - [27/Aug/2025 07:25:21] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:25:21,792  INFO     127.0.0.1 - - [27/Aug/2025 07:25:21] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:25:21,816  INFO     127.0.0.1 - - [27/Aug/2025 07:25:21] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:28:16,227  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:28:16,302  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:28:16,385  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:28:16,392  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:28:16,401  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "GET /static/images/KSGLOGO.png HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:28:16,416  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:28:16,657  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:28:16,657  INFO     127.0.0.1 - - [27/Aug/2025 07:28:16] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:28:17,496  INFO     127.0.0.1 - - [27/Aug/2025 07:28:17] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:28:17,642  INFO     127.0.0.1 - - [27/Aug/2025 07:28:17] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:29:36,520  INFO     127.0.0.1 - - [27/Aug/2025 07:29:36] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:29:36,612  INFO     127.0.0.1 - - [27/Aug/2025 07:29:36] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:29:36,690  INFO     127.0.0.1 - - [27/Aug/2025 07:29:36] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:29:36,704  INFO     127.0.0.1 - - [27/Aug/2025 07:29:36] "GET /static/images/KSGLOGO.png HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:29:36,735  INFO     127.0.0.1 - - [27/Aug/2025 07:29:36] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:29:36,736  INFO     127.0.0.1 - - [27/Aug/2025 07:29:36] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:29:37,006  INFO     127.0.0.1 - - [27/Aug/2025 07:29:37] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:29:37,010  INFO     127.0.0.1 - - [27/Aug/2025 07:29:37] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:29:37,999  INFO     127.0.0.1 - - [27/Aug/2025 07:29:37] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:29:38,005  INFO     127.0.0.1 - - [27/Aug/2025 07:29:38] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:30:40,600  INFO     127.0.0.1 - - [27/Aug/2025 07:30:40] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:30:40,665  INFO     127.0.0.1 - - [27/Aug/2025 07:30:40] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:40,680  INFO     127.0.0.1 - - [27/Aug/2025 07:30:40] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:40,683  INFO     127.0.0.1 - - [27/Aug/2025 07:30:40] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:40,695  INFO     127.0.0.1 - - [27/Aug/2025 07:30:40] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:30:41,184  INFO     127.0.0.1 - - [27/Aug/2025 07:30:41] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:41,186  INFO     127.0.0.1 - - [27/Aug/2025 07:30:41] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:42,073  INFO     127.0.0.1 - - [27/Aug/2025 07:30:42] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:30:42,075  INFO     127.0.0.1 - - [27/Aug/2025 07:30:42] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:30:51,737  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:30:51,803  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:51,812  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:51,822  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:51,825  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:51,884  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:51,884  INFO     127.0.0.1 - - [27/Aug/2025 07:30:51] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:30:52,027  INFO     127.0.0.1 - - [27/Aug/2025 07:30:52] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:30:52,045  INFO     127.0.0.1 - - [27/Aug/2025 07:30:52] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:32:04,037  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:32:04,089  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:32:04,100  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:32:04,116  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:32:04,129  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:32:04,215  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:32:04,226  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:32:04,425  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:32:04,427  INFO     127.0.0.1 - - [27/Aug/2025 07:32:04] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:37:51,379  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:37:51,426  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,438  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,454  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,459  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:37:51,836  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,840  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,841  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,891  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:51,895  INFO     127.0.0.1 - - [27/Aug/2025 07:37:51] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:37:52,758  INFO     127.0.0.1 - - [27/Aug/2025 07:37:52] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:37:52,760  INFO     127.0.0.1 - - [27/Aug/2025 07:37:52] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:16,054  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:38:16,100  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,108  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,109  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[33mGET /your-logo.png HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:16,128  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,169  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,170  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,172  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,203  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,205  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:16,386  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:16,389  INFO     127.0.0.1 - - [27/Aug/2025 07:38:16] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:36,803  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:38:36,846  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,856  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,856  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,859  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[33mGET /your-logo.png HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:36,933  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,938  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,939  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,964  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:36,966  INFO     127.0.0.1 - - [27/Aug/2025 07:38:36] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:37,117  INFO     127.0.0.1 - - [27/Aug/2025 07:38:37] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:37,119  INFO     127.0.0.1 - - [27/Aug/2025 07:38:37] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:48,993  INFO     127.0.0.1 - - [27/Aug/2025 07:38:48] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:38:49,033  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,044  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,048  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,052  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,099  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,101  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,136  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,141  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:38:49,285  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:38:49,300  INFO     127.0.0.1 - - [27/Aug/2025 07:38:49] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:39:13,172  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:39:13,224  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,249  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,255  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,256  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:39:13,333  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,333  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,338  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,362  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,366  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:13,505  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:39:13,510  INFO     127.0.0.1 - - [27/Aug/2025 07:39:13] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:39:31,960  INFO     127.0.0.1 - - [27/Aug/2025 07:39:31] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:39:31,998  INFO     127.0.0.1 - - [27/Aug/2025 07:39:31] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,008  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,014  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,015  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,079  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,082  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,091  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,110  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,116  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:32,255  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:39:32,287  INFO     127.0.0.1 - - [27/Aug/2025 07:39:32] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:39:50,088  INFO     127.0.0.1 - - [27/Aug/2025 07:39:50] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:50,091  INFO     127.0.0.1 - - [27/Aug/2025 07:39:50] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:39:50,111  INFO     127.0.0.1 - - [27/Aug/2025 07:39:50] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:39:50,128  INFO     127.0.0.1 - - [27/Aug/2025 07:39:50] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:26,695  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:40:26,750  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:26,784  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:26,823  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:26,823  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:26,859  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:26,857  INFO     127.0.0.1 - - [27/Aug/2025 07:40:26] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:27,121  INFO     127.0.0.1 - - [27/Aug/2025 07:40:27] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:27,122  INFO     127.0.0.1 - - [27/Aug/2025 07:40:27] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:27,215  INFO     127.0.0.1 - - [27/Aug/2025 07:40:27] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:27,217  INFO     127.0.0.1 - - [27/Aug/2025 07:40:27] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:27,966  INFO     127.0.0.1 - - [27/Aug/2025 07:40:27] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:27,977  INFO     127.0.0.1 - - [27/Aug/2025 07:40:27] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:36,644  INFO     127.0.0.1 - - [27/Aug/2025 07:40:36] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:40:36,697  INFO     127.0.0.1 - - [27/Aug/2025 07:40:36] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:36,726  INFO     127.0.0.1 - - [27/Aug/2025 07:40:36] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:36,744  INFO     127.0.0.1 - - [27/Aug/2025 07:40:36] "[33mGET /static/images/kasrawyLOsGO.jpg HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:36,784  INFO     127.0.0.1 - - [27/Aug/2025 07:40:36] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:36,797  INFO     127.0.0.1 - - [27/Aug/2025 07:40:36] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:37,033  INFO     127.0.0.1 - - [27/Aug/2025 07:40:37] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:37,036  INFO     127.0.0.1 - - [27/Aug/2025 07:40:37] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:37,038  INFO     127.0.0.1 - - [27/Aug/2025 07:40:37] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:37,140  INFO     127.0.0.1 - - [27/Aug/2025 07:40:37] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:37,140  INFO     127.0.0.1 - - [27/Aug/2025 07:40:37] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:38,067  INFO     127.0.0.1 - - [27/Aug/2025 07:40:38] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:38,093  INFO     127.0.0.1 - - [27/Aug/2025 07:40:38] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:44,428  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:40:44,507  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:44,520  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:44,535  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:44,537  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:44,541  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:44,579  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:44,581  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:44,827  INFO     127.0.0.1 - - [27/Aug/2025 07:40:44] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:45,618  INFO     127.0.0.1 - - [27/Aug/2025 07:40:45] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:45,633  INFO     127.0.0.1 - - [27/Aug/2025 07:40:45] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:58,635  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:40:58,705  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:58,750  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:58,759  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:58,789  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "[33mGET /your-logo.png HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:58,796  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:58,800  INFO     127.0.0.1 - - [27/Aug/2025 07:40:58] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:59,057  INFO     127.0.0.1 - - [27/Aug/2025 07:40:59] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:59,060  INFO     127.0.0.1 - - [27/Aug/2025 07:40:59] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:40:59,956  INFO     127.0.0.1 - - [27/Aug/2025 07:40:59] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:40:59,959  INFO     127.0.0.1 - - [27/Aug/2025 07:40:59] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:41:48,194  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:41:48,277  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:48,317  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:41:48,328  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:48,394  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:48,399  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:48,707  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:48,709  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:48,710  INFO     127.0.0.1 - - [27/Aug/2025 07:41:48] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:41:49,568  INFO     127.0.0.1 - - [27/Aug/2025 07:41:49] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:41:49,575  INFO     127.0.0.1 - - [27/Aug/2025 07:41:49] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:44:39,750  INFO     127.0.0.1 - - [27/Aug/2025 07:44:39] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:44:39,861  INFO     127.0.0.1 - - [27/Aug/2025 07:44:39] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:39,944  INFO     127.0.0.1 - - [27/Aug/2025 07:44:39] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:39,946  INFO     127.0.0.1 - - [27/Aug/2025 07:44:39] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:44:39,955  INFO     127.0.0.1 - - [27/Aug/2025 07:44:39] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:39,959  INFO     127.0.0.1 - - [27/Aug/2025 07:44:39] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:44:40,185  INFO     127.0.0.1 - - [27/Aug/2025 07:44:40] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:40,186  INFO     127.0.0.1 - - [27/Aug/2025 07:44:40] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:40,186  INFO     127.0.0.1 - - [27/Aug/2025 07:44:40] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:41,115  INFO     127.0.0.1 - - [27/Aug/2025 07:44:41] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:44:41,118  INFO     127.0.0.1 - - [27/Aug/2025 07:44:41] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:44:50,481  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:44:50,543  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:50,723  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:50,741  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:44:50,742  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:44:50,756  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:50,997  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:50,998  INFO     127.0.0.1 - - [27/Aug/2025 07:44:50] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:51,000  INFO     127.0.0.1 - - [27/Aug/2025 07:44:51] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:44:51,817  INFO     127.0.0.1 - - [27/Aug/2025 07:44:51] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:44:51,840  INFO     127.0.0.1 - - [27/Aug/2025 07:44:51] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:46:00,778  INFO     127.0.0.1 - - [27/Aug/2025 07:46:00] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:46:00,877  INFO     127.0.0.1 - - [27/Aug/2025 07:46:00] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:01,090  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:46:01,099  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:01,099  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:01,102  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:46:01,553  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:01,642  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:01,684  INFO     127.0.0.1 - - [27/Aug/2025 07:46:01] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:02,558  INFO     127.0.0.1 - - [27/Aug/2025 07:46:02] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:46:02,563  INFO     127.0.0.1 - - [27/Aug/2025 07:46:02] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:46:48,433  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:46:48,511  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:48,522  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:46:48,578  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:48,582  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:46:48,584  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:48,613  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:48,614  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:48,870  INFO     127.0.0.1 - - [27/Aug/2025 07:46:48] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:46:49,904  INFO     127.0.0.1 - - [27/Aug/2025 07:46:49] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:46:49,947  INFO     127.0.0.1 - - [27/Aug/2025 07:46:49] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:47:35,952  INFO     127.0.0.1 - - [27/Aug/2025 07:47:35] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:47:35,973  INFO     127.0.0.1 - - [27/Aug/2025 07:47:35] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:47:36,011  INFO     127.0.0.1 - - [27/Aug/2025 07:47:36] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:00,352  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:48:00,418  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:00,483  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:00,538  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:00,564  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:00,571  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:00,836  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:00,839  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:00,844  INFO     127.0.0.1 - - [27/Aug/2025 07:48:00] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:01,584  INFO     127.0.0.1 - - [27/Aug/2025 07:48:01] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:01,588  INFO     127.0.0.1 - - [27/Aug/2025 07:48:01] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:16,662  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:48:16,737  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:16,776  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:16,779  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:16,807  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:16,822  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:16,836  INFO     127.0.0.1 - - [27/Aug/2025 07:48:16] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:17,074  INFO     127.0.0.1 - - [27/Aug/2025 07:48:17] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:17,076  INFO     127.0.0.1 - - [27/Aug/2025 07:48:17] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:17,960  INFO     127.0.0.1 - - [27/Aug/2025 07:48:17] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:17,991  INFO     127.0.0.1 - - [27/Aug/2025 07:48:17] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:37,430  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:48:37,482  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:37,505  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:37,507  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:37,514  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:37,925  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:37,927  INFO     127.0.0.1 - - [27/Aug/2025 07:48:37] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:38,733  INFO     127.0.0.1 - - [27/Aug/2025 07:48:38] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:38,736  INFO     127.0.0.1 - - [27/Aug/2025 07:48:38] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:47,416  INFO     127.0.0.1 - - [27/Aug/2025 07:48:47] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:48:47,423  INFO     127.0.0.1 - - [27/Aug/2025 07:48:47] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:47,426  INFO     127.0.0.1 - - [27/Aug/2025 07:48:47] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:48:47,495  INFO     127.0.0.1 - - [27/Aug/2025 07:48:47] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:49:53,118  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:49:53,159  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:53,168  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:53,171  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:53,173  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:53,581  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:53,583  INFO     127.0.0.1 - - [27/Aug/2025 07:49:53] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:54,352  INFO     127.0.0.1 - - [27/Aug/2025 07:49:54] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:49:54,357  INFO     127.0.0.1 - - [27/Aug/2025 07:49:54] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:49:58,832  INFO     127.0.0.1 - - [27/Aug/2025 07:49:58] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:58,840  INFO     127.0.0.1 - - [27/Aug/2025 07:49:58] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:49:58,861  INFO     127.0.0.1 - - [27/Aug/2025 07:49:58] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:49:58,884  INFO     127.0.0.1 - - [27/Aug/2025 07:49:58] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:50:35,884  INFO     127.0.0.1 - - [27/Aug/2025 07:50:35] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:50:35,925  INFO     127.0.0.1 - - [27/Aug/2025 07:50:35] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:35,945  INFO     127.0.0.1 - - [27/Aug/2025 07:50:35] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:35,945  INFO     127.0.0.1 - - [27/Aug/2025 07:50:35] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:35,953  INFO     127.0.0.1 - - [27/Aug/2025 07:50:35] "[36mGET /static/images/kasrawyLOGO.jpg HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:36,332  INFO     127.0.0.1 - - [27/Aug/2025 07:50:36] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:36,335  INFO     127.0.0.1 - - [27/Aug/2025 07:50:36] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:36,334  INFO     127.0.0.1 - - [27/Aug/2025 07:50:36] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:37,135  INFO     127.0.0.1 - - [27/Aug/2025 07:50:37] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:50:37,138  INFO     127.0.0.1 - - [27/Aug/2025 07:50:37] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:50:40,163  INFO     127.0.0.1 - - [27/Aug/2025 07:50:40] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:50:40,169  INFO     127.0.0.1 - - [27/Aug/2025 07:50:40] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:40,170  INFO     127.0.0.1 - - [27/Aug/2025 07:50:40] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:50:40,229  INFO     127.0.0.1 - - [27/Aug/2025 07:50:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:52:26,970  INFO     127.0.0.1 - - [27/Aug/2025 07:52:26] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:52:27,013  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:27,022  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:27,025  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "GET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:52:27,040  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:27,433  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:27,436  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:27,438  INFO     127.0.0.1 - - [27/Aug/2025 07:52:27] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:28,242  INFO     127.0.0.1 - - [27/Aug/2025 07:52:28] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:52:28,248  INFO     127.0.0.1 - - [27/Aug/2025 07:52:28] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:52:30,765  INFO     127.0.0.1 - - [27/Aug/2025 07:52:30] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:52:30,770  INFO     127.0.0.1 - - [27/Aug/2025 07:52:30] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:30,781  INFO     127.0.0.1 - - [27/Aug/2025 07:52:30] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:52:30,822  INFO     127.0.0.1 - - [27/Aug/2025 07:52:30] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:53:13,962  INFO     127.0.0.1 - - [27/Aug/2025 07:53:13] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 07:53:14,008  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:14,022  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:14,023  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:14,037  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:14,050  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:14,431  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:14,433  INFO     127.0.0.1 - - [27/Aug/2025 07:53:14] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:15,302  INFO     127.0.0.1 - - [27/Aug/2025 07:53:15] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:53:15,307  INFO     127.0.0.1 - - [27/Aug/2025 07:53:15] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:53:21,004  INFO     127.0.0.1 - - [27/Aug/2025 07:53:21] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 07:53:21,006  INFO     127.0.0.1 - - [27/Aug/2025 07:53:21] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:21,017  INFO     127.0.0.1 - - [27/Aug/2025 07:53:21] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 07:53:21,043  INFO     127.0.0.1 - - [27/Aug/2025 07:53:21] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:35:49,031  INFO     Logging system initialized Filename::logging_config.py:92 
+2025-08-27 09:35:49,172  DEBUG    Debug messages will only show if LOG_LEVEL=DEBUG Filename::logging_config.py:93 
+2025-08-27 09:35:49,367  INFO     [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000 Filename::_internal.py:97 
+2025-08-27 09:35:49,368  INFO     [33mPress CTRL+C to quit[0m Filename::_internal.py:97 
+2025-08-27 09:35:49,378  INFO      * Restarting with stat Filename::_internal.py:97 
+2025-08-27 09:35:54,850  INFO     Logging system initialized Filename::logging_config.py:92 
+2025-08-27 09:35:54,854  DEBUG    Debug messages will only show if LOG_LEVEL=DEBUG Filename::logging_config.py:93 
+2025-08-27 09:35:54,877  WARNING   * Debugger is active! Filename::_internal.py:97 
+2025-08-27 09:35:54,886  INFO      * Debugger PIN: 114-330-566 Filename::_internal.py:97 
+2025-08-27 09:35:59,775  INFO     127.0.0.1 - - [27/Aug/2025 09:35:59] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:36:00,407  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,407  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,543  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,672  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,682  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,834  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,862  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:00,894  INFO     127.0.0.1 - - [27/Aug/2025 09:36:00] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:01,092  INFO     127.0.0.1 - - [27/Aug/2025 09:36:01] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:02,156  INFO     127.0.0.1 - - [27/Aug/2025 09:36:02] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:36:02,158  INFO     127.0.0.1 - - [27/Aug/2025 09:36:02] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:36:02,162  INFO     127.0.0.1 - - [27/Aug/2025 09:36:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:36:15,836  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:36:15,874  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:15,893  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:15,897  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:15,900  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:15,929  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:15,945  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:15,971  INFO     127.0.0.1 - - [27/Aug/2025 09:36:15] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:16,026  INFO     127.0.0.1 - - [27/Aug/2025 09:36:16] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:16,028  INFO     127.0.0.1 - - [27/Aug/2025 09:36:16] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:16,131  INFO     127.0.0.1 - - [27/Aug/2025 09:36:16] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:36:16,133  INFO     127.0.0.1 - - [27/Aug/2025 09:36:16] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:36:20,096  INFO     127.0.0.1 - - [27/Aug/2025 09:36:20] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:20,100  INFO     127.0.0.1 - - [27/Aug/2025 09:36:20] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:36:20,154  INFO     127.0.0.1 - - [27/Aug/2025 09:36:20] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:36:20,167  INFO     127.0.0.1 - - [27/Aug/2025 09:36:20] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:37:03,355  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:37:03,428  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:37:03,539  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:37:03,576  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:37:03,586  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:37:03,606  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:37:03,740  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:37:03,801  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:37:03,802  INFO     127.0.0.1 - - [27/Aug/2025 09:37:03] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:37:04,815  INFO     127.0.0.1 - - [27/Aug/2025 09:37:04] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:37:05,071  INFO     127.0.0.1 - - [27/Aug/2025 09:37:05] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:38:17,705  INFO     127.0.0.1 - - [27/Aug/2025 09:38:17] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:38:17,716  INFO     127.0.0.1 - - [27/Aug/2025 09:38:17] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:38:17,741  INFO     127.0.0.1 - - [27/Aug/2025 09:38:17] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:38:17,781  INFO     127.0.0.1 - - [27/Aug/2025 09:38:17] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:40:12,280  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:40:12,316  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:40:12,339  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:40:12,346  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:40:12,348  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:40:12,719  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:40:12,719  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:40:12,721  INFO     127.0.0.1 - - [27/Aug/2025 09:40:12] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:40:13,718  INFO     127.0.0.1 - - [27/Aug/2025 09:40:13] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:40:13,721  INFO     127.0.0.1 - - [27/Aug/2025 09:40:13] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:41:49,632  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:41:49,669  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:41:49,694  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:41:49,695  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:41:49,697  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:41:49,750  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:41:49,752  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:41:49,753  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:41:49,924  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:41:49,925  INFO     127.0.0.1 - - [27/Aug/2025 09:41:49] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:42:33,165  INFO     127.0.0.1 - - [27/Aug/2025 09:42:33] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:42:33,171  INFO     127.0.0.1 - - [27/Aug/2025 09:42:33] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:42:33,179  INFO     127.0.0.1 - - [27/Aug/2025 09:42:33] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:42:33,264  INFO     127.0.0.1 - - [27/Aug/2025 09:42:33] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:50:26,676  INFO     127.0.0.1 - - [27/Aug/2025 09:50:26] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:54:18,594  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:54:18,685  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:18,713  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:18,720  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:18,726  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:18,727  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:54:18,927  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:18,927  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:18,932  INFO     127.0.0.1 - - [27/Aug/2025 09:54:18] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:54:19,752  INFO     127.0.0.1 - - [27/Aug/2025 09:54:19] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:54:19,799  INFO     127.0.0.1 - - [27/Aug/2025 09:54:19] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:55:03,736  INFO     127.0.0.1 - - [27/Aug/2025 09:55:03] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:55:03,904  INFO     127.0.0.1 - - [27/Aug/2025 09:55:03] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:55:03,940  INFO     127.0.0.1 - - [27/Aug/2025 09:55:03] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:55:03,942  INFO     127.0.0.1 - - [27/Aug/2025 09:55:03] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:55:03,958  INFO     127.0.0.1 - - [27/Aug/2025 09:55:03] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:55:03,978  INFO     127.0.0.1 - - [27/Aug/2025 09:55:03] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:55:04,089  INFO     127.0.0.1 - - [27/Aug/2025 09:55:04] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:55:04,091  INFO     127.0.0.1 - - [27/Aug/2025 09:55:04] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:55:04,100  INFO     127.0.0.1 - - [27/Aug/2025 09:55:04] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:55:05,010  INFO     127.0.0.1 - - [27/Aug/2025 09:55:05] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:55:05,020  INFO     127.0.0.1 - - [27/Aug/2025 09:55:05] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:56:08,934  INFO     127.0.0.1 - - [27/Aug/2025 09:56:08] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:56:08,982  INFO     127.0.0.1 - - [27/Aug/2025 09:56:08] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:56:09,237  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:56:09,254  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:56:09,261  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:56:09,271  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "GET /static/index.css HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:56:09,377  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:56:09,403  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:56:09,427  INFO     127.0.0.1 - - [27/Aug/2025 09:56:09] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:56:10,418  INFO     127.0.0.1 - - [27/Aug/2025 09:56:10] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:56:10,424  INFO     127.0.0.1 - - [27/Aug/2025 09:56:10] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:56:59,893  INFO     127.0.0.1 - - [27/Aug/2025 09:56:59] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 09:57:00,020  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:00,029  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:00,041  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:00,045  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:00,059  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:57:00,255  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:00,258  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:00,287  INFO     127.0.0.1 - - [27/Aug/2025 09:57:00] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:57:01,408  INFO     127.0.0.1 - - [27/Aug/2025 09:57:01] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:57:01,490  INFO     127.0.0.1 - - [27/Aug/2025 09:57:01] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:59:06,914  INFO     127.0.0.1 - - [27/Aug/2025 09:59:06] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 09:59:06,928  INFO     127.0.0.1 - - [27/Aug/2025 09:59:06] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:59:06,940  INFO     127.0.0.1 - - [27/Aug/2025 09:59:06] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 09:59:06,985  INFO     127.0.0.1 - - [27/Aug/2025 09:59:06] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:03:02,603  INFO     127.0.0.1 - - [27/Aug/2025 10:03:02] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:03:02,640  INFO     127.0.0.1 - - [27/Aug/2025 10:03:02] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:02,654  INFO     127.0.0.1 - - [27/Aug/2025 10:03:02] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:02,656  INFO     127.0.0.1 - - [27/Aug/2025 10:03:02] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:02,655  INFO     127.0.0.1 - - [27/Aug/2025 10:03:02] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:03,019  INFO     127.0.0.1 - - [27/Aug/2025 10:03:03] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:03,020  INFO     127.0.0.1 - - [27/Aug/2025 10:03:03] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:03,022  INFO     127.0.0.1 - - [27/Aug/2025 10:03:03] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:03,845  INFO     127.0.0.1 - - [27/Aug/2025 10:03:03] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:03:03,853  INFO     127.0.0.1 - - [27/Aug/2025 10:03:03] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:03:11,390  DEBUG    Rendering admin page Filename::IDReaderEndPoints.py:24 
+2025-08-27 10:03:11,480  INFO     127.0.0.1 - - [27/Aug/2025 10:03:11] "GET /admin HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:03:11,571  INFO     127.0.0.1 - - [27/Aug/2025 10:03:11] "[36mGET /static/admin.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:11,615  INFO     127.0.0.1 - - [27/Aug/2025 10:03:11] "[36mGET /static/bootstrap-5.3.7-dist/css/bootstrap.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:11,683  INFO     127.0.0.1 - - [27/Aug/2025 10:03:11] "[36mGET /static/admin.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:11,700  INFO     127.0.0.1 - - [27/Aug/2025 10:03:11] "[36mGET /static/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:13,464  DEBUG    Login User Filename::IDReaderEndPoints.py:29 
+2025-08-27 10:03:13,467  DEBUG    Processing login request Filename::IDReaderAPI_Mngr.py:64 
+2025-08-27 10:03:13,470  DEBUG    Login request form data: ImmutableMultiDict([('username', 'admin'), ('password', 'admin')]) Filename::IDReaderAPI_Mngr.py:66 
+2025-08-27 10:03:13,473  DEBUG    Validating user credentials for username: admin Filename::IDReaderAPI_Mngr.py:76 
+2025-08-27 10:03:13,476  DEBUG    Login method called with username: admin Filename::IDReaderEndService.py:226 
+2025-08-27 10:03:13,477  DEBUG    Returning cached admin user: AdminUser(id=1, username=admin, created_at=2025-08-26 03:08:27.628203+00:00) Filename::dBService.py:395 
+2025-08-27 10:03:13,952  INFO     Admin user Updated successfully Filename::dBService.py:424 
+2025-08-27 10:03:13,953  INFO     Admin user logged in successfully Filename::dBService.py:480 
+2025-08-27 10:03:13,954  DEBUG    Login successful for user: admin Filename::IDReaderEndService.py:229 
+2025-08-27 10:03:13,958  INFO     127.0.0.1 - - [27/Aug/2025 10:03:13] "POST /login HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:03:13,967  DEBUG    Fetching subscription status Filename::IDReaderEndPoints.py:44 
+2025-08-27 10:03:13,969  DEBUG    Fetching subscription status Filename::IDReaderAPI_Mngr.py:93 
+2025-08-27 10:03:13,971  DEBUG    Retrieving subscription status Filename::IDReaderEndService.py:218 
+2025-08-27 10:03:13,972  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:03:13,973  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 04:31:34.506977, total_scans=0, is_active=True), last_modified=2025-08-27 04:31:34.526746, verification_hash=dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5) Filename::dBService.py:111 
+2025-08-27 10:03:13,974  DEBUG    Subscription status Data fetched successfully: {'id': 1, 'install_date': datetime.datetime(2025, 8, 27, 4, 31, 34, 506977), 'total_scans': 0, 'is_active': True, 'last_modified': datetime.datetime(2025, 8, 27, 4, 31, 34, 526746), 'verification_hash': 'dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5', 'expiry_days': 10, 'expiry_date': '2025-09-06T04:31:34.506977', 'max_scans': 10} Filename::IDReaderAPI_Mngr.py:96 
+2025-08-27 10:03:13,976  INFO     127.0.0.1 - - [27/Aug/2025 10:03:13] "GET /admin/subscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:03:29,060  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:03:29,115  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,119  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,132  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,137  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,165  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,184  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,187  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:03:29,321  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:03:29,326  INFO     127.0.0.1 - - [27/Aug/2025 10:03:29] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:03:43,343  DEBUG    Processing request in IDReaderAPI_Mngr Filename::IDReaderAPI_Mngr.py:21 
+2025-08-27 10:03:43,363  DEBUG    Image Converted to bytes successfully Filename::IDReaderAPI_Mngr.py:35 
+2025-08-27 10:03:43,364  DEBUG    Image bytes received successfully Filename::IDReaderAPI_Mngr.py:44 
+2025-08-27 10:03:43,366  DEBUG    Invoking IDReaderEndService for ID card readingon the image file document Filename::IDReaderAPI_Mngr.py:46 
+2025-08-27 10:03:43,371  DEBUG    Starting ID Card Reader processing Filename::IDReaderEndService.py:48 
+2025-08-27 10:03:43,376  DEBUG    Validating subscription status Filename::IDReaderEndService.py:53 
+2025-08-27 10:03:43,378  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:03:43,380  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 04:31:34.506977, total_scans=0, is_active=True), last_modified=2025-08-27 04:31:34.526746, verification_hash=dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5) Filename::dBService.py:111 
+2025-08-27 10:03:43,381  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:03:43,382  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 04:31:34.506977, total_scans=0, is_active=True), last_modified=2025-08-27 04:31:34.526746, verification_hash=dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5) Filename::dBService.py:111 
+2025-08-27 10:03:43,386  DEBUG    Stored hash: dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5 Filename::dBService.py:229 
+2025-08-27 10:03:43,387  DEBUG    Computed hash: dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5 Filename::dBService.py:237 
+2025-08-27 10:03:43,389  DEBUG    Debug hash data: 12025-08-27T04:31:34.5069770True2025-08-27T04:31:34.52674665131630b383c5c9b6ca42459a187de479596ae8ec485d84a672a53d19f03cb1 Filename::dBService.py:244 
+2025-08-27 10:03:43,391  INFO     Subscription verification passed Filename::dBService.py:248 
+2025-08-27 10:03:43,395  WARNING  Subscription is nearing scan limit: 0/10 Filename::dBService.py:315 
+2025-08-27 10:03:43,396  INFO     Subscription validation passed Filename::dBService.py:318 
+2025-08-27 10:03:43,397  DEBUG    iDCardreaderORG::Subscription is valid Filename::IDReaderEndService.py:59 
+2025-08-27 10:03:43,400  WARNING  Warning message: Subscription is nearing scan limit: 0/10 Filename::IDReaderEndService.py:61 
+2025-08-27 10:03:43,632  DEBUG    Detecting ID card labels in the image file Filename::IDReaderEndService.py:68 
+2025-08-27 10:03:43,633  DEBUG    ID card detection is disabled, skipping ID card detection Filename::IDReaderEndService.py:77 
+2025-08-27 10:03:43,635  DEBUG    Start OCR extraction Process Filename::IDReaderEndService.py:83 
+2025-08-27 10:03:43,636  DEBUG    Starting Gem OCR Processing With prompt: This is an Arabic National ID card, which contains the person fisrt name then parent full name then adress then the national ID, and other data. Act as a highly accurate and specialized Arabic Optical Character Recognition (OCR) system, so please extract all Arabic characters/numbers from the image, be proficient in interpreting Arabic National ID cards.The extracted information should be returned as a single JSON object with the following nested keys: "firstname", "parentfullname", "NationalID", and "address". Each of these should contain a nested object with "arabic" and "english" string fields.You can also predict the word that was not read correctly.make it fast an acurate. Filename::OCRHandler.py:36 
+2025-08-27 10:03:43,637  INFO     AFC is enabled with max remote calls: 10. Filename::models.py:5827 
+2025-08-27 10:03:43,659  DEBUG    connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None Filename::_trace.py:47 
+2025-08-27 10:03:43,664  DEBUG    connect_tcp.failed exception=ConnectError(gaierror(11001, 'getaddrinfo failed')) Filename::_trace.py:47 
+2025-08-27 10:03:43,666  ERROR    Error while extracting data: Error processing image using the OCR Method: [Errno 11001] getaddrinfo failed Filename::IDReaderAPI_Mngr.py:50 
+Traceback (most recent call last):
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Projects\Egyption Card\NatIDReaderWeb\app\Services\IDReaderEndService.py", line 104, in _OCRMethod
+    OCRResult= GeminiOCRreader.geminiOCRreader(img_bytes,ext)
+  File "E:\Projects\Egyption Card\NatIDReaderWeb\app\Services\OCRHandler.py", line 44, in geminiOCRreader
+    response = client.models.generate_content(
+        model=GeminiOCRreader.model,
+        contents=[prompetString,
+                   image],
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\google\genai\models.py", line 5835, in generate_content
+    response = self._generate_content(
+        model=model, contents=contents, config=parsed_config
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\google\genai\models.py", line 4761, in _generate_content
+    response = self._api_client.request(
+        'post', path, request_dict, http_options
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\google\genai\_api_client.py", line 1177, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\google\genai\_api_client.py", line 997, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\google\genai\_api_client.py", line 967, in _request_once
+    response = self._httpx_client.request(
+        method=http_request.method,
+    ...<3 lines>...
+        timeout=http_request.timeout,
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "e:\Projects\Egyption Card\NatIDReaderWeb\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Projects\Egyption Card\NatIDReaderWeb\app\Routes\API_Managers\IDReaderAPI_Mngr.py", line 48, in process
+    extracted_data, processed_image,warningMSG = IDReaderAPI_Mngr._iDReaderEndService_Mngr.iDCardreader(img_bytes,ext,detectIDcard=False)
+                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Projects\Egyption Card\NatIDReaderWeb\app\Services\IDReaderEndService.py", line 84, in iDCardreader
+    ocrResults= self._OCRMethod(Imagefile,ext)
+  File "E:\Projects\Egyption Card\NatIDReaderWeb\app\Services\IDReaderEndService.py", line 107, in _OCRMethod
+    raise Exception(f"Error processing image using the OCR Method: {str(e)}")
+Exception: Error processing image using the OCR Method: [Errno 11001] getaddrinfo failed
+2025-08-27 10:03:43,955  INFO     127.0.0.1 - - [27/Aug/2025 10:03:43] "[31m[1mPOST /process HTTP/1.1[0m" 400 - Filename::_internal.py:97 
+2025-08-27 10:05:06,654  DEBUG    Rendering admin page Filename::IDReaderEndPoints.py:24 
+2025-08-27 10:05:06,656  INFO     127.0.0.1 - - [27/Aug/2025 10:05:06] "GET /admin HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:05:06,707  INFO     127.0.0.1 - - [27/Aug/2025 10:05:06] "[36mGET /static/bootstrap-5.3.7-dist/css/bootstrap.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:05:06,710  INFO     127.0.0.1 - - [27/Aug/2025 10:05:06] "[36mGET /static/admin.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:05:06,729  INFO     127.0.0.1 - - [27/Aug/2025 10:05:06] "[36mGET /static/admin.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:05:06,732  INFO     127.0.0.1 - - [27/Aug/2025 10:05:06] "[36mGET /static/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:05:06,799  DEBUG    Fetching subscription status Filename::IDReaderEndPoints.py:44 
+2025-08-27 10:05:06,801  DEBUG    Fetching subscription status Filename::IDReaderAPI_Mngr.py:93 
+2025-08-27 10:05:06,802  DEBUG    Retrieving subscription status Filename::IDReaderEndService.py:218 
+2025-08-27 10:05:06,804  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:05:06,805  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 04:31:34.506977, total_scans=0, is_active=True), last_modified=2025-08-27 04:31:34.526746, verification_hash=dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5) Filename::dBService.py:111 
+2025-08-27 10:05:06,807  DEBUG    Subscription status Data fetched successfully: {'id': 1, 'install_date': datetime.datetime(2025, 8, 27, 4, 31, 34, 506977), 'total_scans': 0, 'is_active': True, 'last_modified': datetime.datetime(2025, 8, 27, 4, 31, 34, 526746), 'verification_hash': 'dfdd7394cf565b9d1287753594f7aad90fda10ae9e1295097fb83c22c02a14c5', 'expiry_days': 10, 'expiry_date': '2025-09-06T04:31:34.506977', 'max_scans': 10} Filename::IDReaderAPI_Mngr.py:96 
+2025-08-27 10:05:06,809  INFO     127.0.0.1 - - [27/Aug/2025 10:05:06] "GET /admin/subscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:05:20,026  DEBUG    ReNew the Subscription Filename::IDReaderEndPoints.py:49 
+2025-08-27 10:05:20,026  DEBUG    Renew the Subscription Process Filename::IDReaderAPI_Mngr.py:117 
+2025-08-27 10:05:20,029  DEBUG    Renew request data: Filename::IDReaderAPI_Mngr.py:119 
+2025-08-27 10:05:20,030  DEBUG    Renew the Subscription Process Filename::IDReaderEndService.py:245 
+2025-08-27 10:05:20,072  INFO     Updated SUBSCRIPTION_EXPIRY_DAYS,MAX_SCANS to 30:20 in E:\Projects\Egyption Card\NatIDReaderWeb\.env Filename::dBService.py:366 
+2025-08-27 10:05:20,216  INFO     App subscription saved successfully Filename::dBService.py:177 
+2025-08-27 10:05:20,217  INFO     Subscription renewed successfully Filename::dBService.py:373 
+2025-08-27 10:05:20,218  DEBUG    Subscription Renewed Filename::IDReaderEndService.py:248 
+2025-08-27 10:05:20,219  DEBUG    Subscription Renewed Filename::IDReaderAPI_Mngr.py:134 
+2025-08-27 10:05:20,220  INFO     127.0.0.1 - - [27/Aug/2025 10:05:20] "POST /admin/renewsubscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:05:20,226  DEBUG    Fetching subscription status Filename::IDReaderEndPoints.py:44 
+2025-08-27 10:05:20,227  DEBUG    Fetching subscription status Filename::IDReaderAPI_Mngr.py:93 
+2025-08-27 10:05:20,229  DEBUG    Retrieving subscription status Filename::IDReaderEndService.py:218 
+2025-08-27 10:05:20,238  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:05:20,240  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 10:05:20.034428, total_scans=0, is_active=True), last_modified=2025-08-27 10:05:20.073492, verification_hash=70c5309d05369a14dd09baa990fba0b2a280da2a4569e842700ac7b08b6756a3) Filename::dBService.py:111 
+2025-08-27 10:05:20,242  DEBUG    Subscription status Data fetched successfully: {'id': 1, 'install_date': datetime.datetime(2025, 8, 27, 10, 5, 20, 34428), 'total_scans': 0, 'is_active': True, 'last_modified': datetime.datetime(2025, 8, 27, 10, 5, 20, 73492), 'verification_hash': '70c5309d05369a14dd09baa990fba0b2a280da2a4569e842700ac7b08b6756a3', 'expiry_days': 30, 'expiry_date': '2025-09-26T10:05:20.034428', 'max_scans': 20} Filename::IDReaderAPI_Mngr.py:96 
+2025-08-27 10:05:20,244  INFO     127.0.0.1 - - [27/Aug/2025 10:05:20] "GET /admin/subscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:05:45,390  DEBUG    Logging out user Filename::IDReaderEndPoints.py:34 
+2025-08-27 10:05:45,391  DEBUG    Processing logout request Filename::IDReaderAPI_Mngr.py:108 
+2025-08-27 10:05:45,392  INFO     127.0.0.1 - - [27/Aug/2025 10:05:45] "GET /logout HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:05:47,524  DEBUG    Login User Filename::IDReaderEndPoints.py:29 
+2025-08-27 10:05:47,526  DEBUG    Processing login request Filename::IDReaderAPI_Mngr.py:64 
+2025-08-27 10:05:47,529  DEBUG    Login request form data: ImmutableMultiDict([('username', 'admin'), ('password', 'admin')]) Filename::IDReaderAPI_Mngr.py:66 
+2025-08-27 10:05:47,533  DEBUG    Validating user credentials for username: admin Filename::IDReaderAPI_Mngr.py:76 
+2025-08-27 10:05:47,536  DEBUG    Login method called with username: admin Filename::IDReaderEndService.py:226 
+2025-08-27 10:05:47,538  DEBUG    Returning cached admin user: AdminUser(id=1, username=admin, created_at=2025-08-26 03:08:27.628203+00:00) Filename::dBService.py:395 
+2025-08-27 10:05:48,000  INFO     Admin user Updated successfully Filename::dBService.py:424 
+2025-08-27 10:05:48,002  INFO     Admin user logged in successfully Filename::dBService.py:480 
+2025-08-27 10:05:48,002  DEBUG    Login successful for user: admin Filename::IDReaderEndService.py:229 
+2025-08-27 10:05:48,004  INFO     127.0.0.1 - - [27/Aug/2025 10:05:48] "POST /login HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:05:48,013  DEBUG    Fetching subscription status Filename::IDReaderEndPoints.py:44 
+2025-08-27 10:05:48,014  DEBUG    Fetching subscription status Filename::IDReaderAPI_Mngr.py:93 
+2025-08-27 10:05:48,015  DEBUG    Retrieving subscription status Filename::IDReaderEndService.py:218 
+2025-08-27 10:05:48,017  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:05:48,019  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 10:05:20.034428, total_scans=0, is_active=True), last_modified=2025-08-27 10:05:20.073492, verification_hash=70c5309d05369a14dd09baa990fba0b2a280da2a4569e842700ac7b08b6756a3) Filename::dBService.py:111 
+2025-08-27 10:05:48,020  DEBUG    Subscription status Data fetched successfully: {'id': 1, 'install_date': datetime.datetime(2025, 8, 27, 10, 5, 20, 34428), 'total_scans': 0, 'is_active': True, 'last_modified': datetime.datetime(2025, 8, 27, 10, 5, 20, 73492), 'verification_hash': '70c5309d05369a14dd09baa990fba0b2a280da2a4569e842700ac7b08b6756a3', 'expiry_days': 30, 'expiry_date': '2025-09-26T10:05:20.034428', 'max_scans': 20} Filename::IDReaderAPI_Mngr.py:96 
+2025-08-27 10:05:48,023  INFO     127.0.0.1 - - [27/Aug/2025 10:05:48] "GET /admin/subscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:07:46,580  DEBUG    Logging out user Filename::IDReaderEndPoints.py:34 
+2025-08-27 10:07:46,582  DEBUG    Processing logout request Filename::IDReaderAPI_Mngr.py:108 
+2025-08-27 10:07:46,583  INFO     127.0.0.1 - - [27/Aug/2025 10:07:46] "GET /logout HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:07:48,564  DEBUG    Login User Filename::IDReaderEndPoints.py:29 
+2025-08-27 10:07:48,566  DEBUG    Processing login request Filename::IDReaderAPI_Mngr.py:64 
+2025-08-27 10:07:48,569  DEBUG    Login request form data: ImmutableMultiDict([('username', 'admin'), ('password', 'admin')]) Filename::IDReaderAPI_Mngr.py:66 
+2025-08-27 10:07:48,570  DEBUG    Validating user credentials for username: admin Filename::IDReaderAPI_Mngr.py:76 
+2025-08-27 10:07:48,571  DEBUG    Login method called with username: admin Filename::IDReaderEndService.py:226 
+2025-08-27 10:07:48,572  DEBUG    Returning cached admin user: AdminUser(id=1, username=admin, created_at=2025-08-26 03:08:27.628203+00:00) Filename::dBService.py:395 
+2025-08-27 10:07:49,028  INFO     Admin user Updated successfully Filename::dBService.py:424 
+2025-08-27 10:07:49,029  INFO     Admin user logged in successfully Filename::dBService.py:480 
+2025-08-27 10:07:49,030  DEBUG    Login successful for user: admin Filename::IDReaderEndService.py:229 
+2025-08-27 10:07:49,031  INFO     127.0.0.1 - - [27/Aug/2025 10:07:49] "POST /login HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:07:49,038  DEBUG    Fetching subscription status Filename::IDReaderEndPoints.py:44 
+2025-08-27 10:07:49,039  DEBUG    Fetching subscription status Filename::IDReaderAPI_Mngr.py:93 
+2025-08-27 10:07:49,042  DEBUG    Retrieving subscription status Filename::IDReaderEndService.py:218 
+2025-08-27 10:07:49,043  DEBUG    Fetching app subscription from database or cache Filename::dBService.py:109 
+2025-08-27 10:07:49,045  DEBUG    Returning cached subscription: AppSubscription(id=1, install_date=2025-08-27 10:05:20.034428, total_scans=0, is_active=True), last_modified=2025-08-27 10:05:20.073492, verification_hash=70c5309d05369a14dd09baa990fba0b2a280da2a4569e842700ac7b08b6756a3) Filename::dBService.py:111 
+2025-08-27 10:07:49,046  DEBUG    Subscription status Data fetched successfully: {'id': 1, 'install_date': datetime.datetime(2025, 8, 27, 10, 5, 20, 34428), 'total_scans': 0, 'is_active': True, 'last_modified': datetime.datetime(2025, 8, 27, 10, 5, 20, 73492), 'verification_hash': '70c5309d05369a14dd09baa990fba0b2a280da2a4569e842700ac7b08b6756a3', 'expiry_days': 30, 'expiry_date': '2025-09-26T10:05:20.034428', 'max_scans': 20} Filename::IDReaderAPI_Mngr.py:96 
+2025-08-27 10:07:49,049  INFO     127.0.0.1 - - [27/Aug/2025 10:07:49] "GET /admin/subscription HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:07:53,933  INFO     127.0.0.1 - - [27/Aug/2025 10:07:53] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:07:53,987  INFO     127.0.0.1 - - [27/Aug/2025 10:07:53] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:53,988  INFO     127.0.0.1 - - [27/Aug/2025 10:07:53] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:53,992  INFO     127.0.0.1 - - [27/Aug/2025 10:07:53] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:53,998  INFO     127.0.0.1 - - [27/Aug/2025 10:07:53] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:54,046  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:54,049  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:54,051  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:54,090  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:54,093  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:07:54,264  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:07:54,270  INFO     127.0.0.1 - - [27/Aug/2025 10:07:54] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:08:24,880  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:08:24,916  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:24,920  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:24,929  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:24,935  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:24,983  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:24,985  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:24,989  INFO     127.0.0.1 - - [27/Aug/2025 10:08:24] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:25,016  INFO     127.0.0.1 - - [27/Aug/2025 10:08:25] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:25,022  INFO     127.0.0.1 - - [27/Aug/2025 10:08:25] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:25,141  INFO     127.0.0.1 - - [27/Aug/2025 10:08:25] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:08:25,143  INFO     127.0.0.1 - - [27/Aug/2025 10:08:25] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:08:47,424  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "GET / HTTP/1.1" 200 - Filename::_internal.py:97 
+2025-08-27 10:08:47,463  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,467  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,480  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/images/kasrawyLOGO-NOBg.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,482  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/images/KSGLOGO.png HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,532  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/index.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,537  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/Resources/dynamsoft.webtwain.config.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,535  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/Resources/dynamsoft.webtwain.initiate.js HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,562  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,583  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[36mGET /static/fontawesome-free-7.0.0-web/webfonts/fa-regular-400.woff2 HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:08:47,727  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:08:47,728  INFO     127.0.0.1 - - [27/Aug/2025 10:08:47] "[33mGET /Resources/dynamsoft.webtwain.install.js?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:31:21,837  INFO     127.0.0.1 - - [27/Aug/2025 10:31:21] "[36mGET /static/index.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:31:21,843  INFO     127.0.0.1 - - [27/Aug/2025 10:31:21] "[36mGET /static/fontawesome-free-7.0.0-web/css/all.min.css HTTP/1.1[0m" 304 - Filename::_internal.py:97 
+2025-08-27 10:31:21,845  INFO     127.0.0.1 - - [27/Aug/2025 10:31:21] "[33mGET /Resources/dynamsoft.webtwain.css?t=20190806 HTTP/1.1[0m" 404 - Filename::_internal.py:97 
+2025-08-27 10:31:21,900  INFO     127.0.0.1 - - [27/Aug/2025 10:31:21] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 - Filename::_internal.py:97 

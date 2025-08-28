@@ -14,8 +14,16 @@
     <!--- Main-container ------------------------------------------------------------------------>
     <div class="container">
 
-        <header>
+        <!-- <header class="header-option-1">
+            <h1>
+                <img src="../static/images/KSGLOGO.png" alt="Vendor Logo" class="vendor-icon">
+                <i class="fas fa-id-card"></i> ID Document Processing
+            </h1>
+        </header> -->
+        <header class="header-option-3">
+            <img src="../static/images/KSGLOGO.png" alt="Vendor Logo" class="vendor-icon">
             <h1><i class="fas fa-id-card"></i> ID Document Processing</h1>
+            <div style="width: 32px;"></div> <!-- Spacer for centering -->
         </header>
         <div class="main-content">
             <!--- Left panel (Import and Uploaded Image) ------------------------------------------------------------------------>
@@ -37,10 +45,10 @@
                     <div class="import-options">
                         <div class="scanner-section">
                             <h3 class="section-title"><i class="fas fa-scanner"></i> Scanner</h3>
-                            <button id="loadScanners" class="btn btn-sm">
+                            <button id="loadScanners" class="btn btn-sm" style="display: none;">
                                 <i class="fas fa-search"></i> Load
                             </button>
-                            <select id="scannerList" disabled>
+                            <select id="scannerList" disabled style="display: none;">
                                 <option value="">No scanners</option>
                             </select>
                             <button id="scanBtn" class="btn btn-sm btn-warning" style="display: none;" disabled>
@@ -253,6 +261,12 @@
                             <i class="fas fa-save"></i> Save All Changes
                         </button>
                     </div>
+                </div>
+                <!-- <div class="vendor-logo-container">
+                    <img src="../static/images/kasrawyLOGO.jpg" alt="Vendor Logo" class="vendor-logo">
+                </div> -->
+                <div class="vendor-logo-container minimal">
+                    <img src="../static/images/kasrawyLOGO-NOBg.png" alt="Vendor Logo" class="vendor-logo">
                 </div>
             </div>
         </div>

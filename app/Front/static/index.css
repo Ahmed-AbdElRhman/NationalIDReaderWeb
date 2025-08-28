@@ -35,21 +35,174 @@ body, html {
     /* overflow: hidden; */
 }
 
-header {
+/* HEADER */
+:root {
+    --dark-color: #2c3e50;
+}
+
+/* Option 1: Icon before the title text */
+/* Option 3: Icon on both sides */
+.header-option-3 {
     background-color: var(--dark-color);
     color: white;
-    padding: 12px 0;
+    padding: 12px 20px;
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-header h1 {
+.header-option-3 .vendor-icon {
+    height: 28px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.header-option-3 h1 {
     text-align: center;
     font-weight: 600;
     font-size: 1.4rem;
-    padding: 0 10px;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
+/* END OF HEADER */
+/* VENDOR LOGO */
+.vendor-logo-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.vendor-logo-container:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vendor-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* .vendor-logo:hover {
+    opacity: 4;
+} */
+
+/* Alternative styles for different panel backgrounds */
+/* .vendor-logo-container.dark-bg {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vendor-logo-container.dark-bg .vendor-logo {
+    filter: brightness(0) invert(1); 
+}
+
+.vendor-logo-container.dark-bg:hover {
+    background: rgba(0, 0, 0, 0.8);
+} */
+
+/* Minimal version without background */
+.vendor-logo-container.minimal {
+    background: none;
+    padding: 4px;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.vendor-logo-container.minimal .vendor-logo {
+    height: 100px;
+    opacity: 1;
+}
+
+/* Larger version for bigger panels */
+/* .vendor-logo-container.large {
+    padding: 10px 16px;
+}
+
+.vendor-logo-container.large .vendor-logo {
+    height: 32px;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vendor-logo-container {
+        padding: 6px 10px;
+    }
+    
+    .vendor-logo {
+        height: 20px;
+    }
+    
+    .vendor-logo-container.large {
+        padding: 8px 12px;
+    }
+    
+    .vendor-logo-container.large .vendor-logo {
+        height: 26px;
+    }
+}
+
+/* Demo panel styles for demonstration */
+.demo-panel {
+    position: relative;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    min-height: 150px;
+}
+
+.demo-panel.dark {
+    background: #343a40;
+    color: white;
+    border-color: #495057;
+}
+
+.demo-panel h3 {
+    margin: 0 0 10px 0;
+    color: #495057;
+}
+
+.demo-panel.dark h3 {
+    color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+}
+
+.demo-title {
+    text-align: center;
+    margin: 20px;
+    color: #343a40;
+} 
+
+
+
+/* END OF VENDOR LOGO */
 
 .main-content {
     display: grid;
